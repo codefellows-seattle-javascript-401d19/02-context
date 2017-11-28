@@ -131,9 +131,39 @@ describe('fp.js', () => {
         }).toThrow();
     });
   });
+  describe('fp.slice', () => {
+    // parameters are f(collection, begin, end)
+    test('return value should be the last three values', ()=>{
+      expect(fp.slice(
+        [1, 2, 3, 4, 5],
+        2
+      ).toString()
+      ).toBe('3,4,5');
+    });
+    test('return value should be the middle 3 values', ()=>{
+      expect(fp.slice(
+        [1, 2, 3, 4, 5],
+        1,
+        3
+      ).toString()
+      ).toBe('2,3,4');
+    });
+    test('an exception should be thrown if error', ()=>{
+      expect(
+        () => {
+          fp.slice(
+            [1, 2, 3, 4, 5],
+            5,
+            1
+          );
+        }).toThrow();
+      expect(
+        () => {
+          fp.slice(
+            1,
+            1,
+            1);
+        }).toThrow();
+    });
+  });
 });
-
-
-// `fp.map` and `fp.filter` should have the function signature `(callback, collection) => Array`
-// * `fp.reduce` should have the function signature `(callback, initialState, collection) => data`
-// * `fp.slice` should have the function signature `(begin, end, collection) => Array`
