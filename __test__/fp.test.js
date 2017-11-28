@@ -101,23 +101,23 @@ describe('fp.js', () => {
     });
     test('return values should be larger than 90', ()=>{
       expect(fp.filter(
-        () => grades > 90,
+        (grades) => grades > 90,
         [95, 97.5, 81, 99, 23]
       ).toString()
-      ).toBe('95, 97.5, 81, 99, 23');
+      ).toBe('95,97.5,99');
     });
     test('an exception should be thrown if error', ()=>{
       expect(
         () => {
           fp.filter(
-            () => grades > 90,
+            (grades) => grades > 90,
             ['kerry', 97.5, 'nicholas', 99, 23]
           );
         }).toThrow();
       expect(
         () => {
           fp.filter(
-            () => grades > 90,
+            (grades) => grades > 90,
             99
           );
 
