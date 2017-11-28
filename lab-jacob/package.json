@@ -1,0 +1,23 @@
+{
+  "name": "02-context",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) 02: Tools and Context ======",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cloud887/02-context.git"
+  },
+  "keywords": [],
+  "author": "Jacob",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cloud887/02-context/issues"
+  },
+  "homepage": "https://github.com/Cloud887/02-context#readme"
+}
