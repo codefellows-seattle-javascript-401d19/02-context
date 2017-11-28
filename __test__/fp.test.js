@@ -1,19 +1,19 @@
 'use strict';
 
-const customFunct = require('../lib/fp.js');
+const fp = require('../lib/fp.js');
 
 describe('fp.js', () => {
   describe('fp.reduce', () => {
     // parameters are f(collection, callback, initialValue)
     test('return value should be the sum of the collection', ()=>{
-      expect(customFunct.reduce(
+      expect(fp.reduce(
         (x, y) => x+y,
         [1,2,3],
         0)
       ).toBe(6);
     });
     test('return value should be the product of the collection', ()=>{
-      expect(customFunct.reduce(
+      expect(fp.reduce(
         (x, y) => x*y,
         [1,5,3],
         1)
@@ -22,28 +22,28 @@ describe('fp.js', () => {
     test('an exception should be thrown if error', ()=>{
       expect(
         () => {
-          customFunct.reduce(
+          fp.reduce(
             (x, y) => x+y,
             ['1',2, null],
             0);
         }).toThrow();
       expect(
         () => {
-          customFunct.reduce(
+          fp.reduce(
             (x, y) => x+y,
             1,
             0);
         }).toThrow();
       expect(
         () => {
-          customFunct.reduce(
+          fp.reduce(
             (x, y) => x+y,
             [1,2,3],
             'a');
         }).toThrow();
       expect(
         () => {
-          customFunct.reduce(
+          fp.reduce(
             'lets do this',
             [1, 2, 3],
             0);
@@ -53,14 +53,14 @@ describe('fp.js', () => {
   describe('fp.map', () => {
     // parameters are f(collection, callback)
     test('return values should increment by two', ()=>{
-      expect(customFunct.map(
+      expect(fp.map(
         (x) => x+2,
         [1,2,3]
       ).toString()
       ).toBe('3,4,5');
     });
     test('return values should double', ()=>{
-      expect(customFunct.map(
+      expect(fp.map(
         (x) => x*2,
         [1,2,3]
       ).toString()
@@ -69,21 +69,21 @@ describe('fp.js', () => {
     test('an exception should be thrown if error', ()=>{
       expect(
         () => {
-          customFunct.map(
+          fp.map(
             (x) => x+2,
             ['1',2, null],
             0);
         }).toThrow();
       expect(
         () => {
-          customFunct.map(
+          fp.map(
             (x) => x+2,
             1
           );
         }).toThrow();
       expect(
         () => {
-          customFunct.map(
+          fp.map(
             'lets do this',
             [1, 2, 3]
           );
@@ -93,14 +93,14 @@ describe('fp.js', () => {
   describe('fp.filter', () => {
     // parameters are f(collection, callback)
     test('return values should only have a length greater than 6', ()=>{
-      expect(customFunct.filter(
+      expect(fp.filter(
         (password) => password.length > 6,
         ['password','pass','1234']
       ).toString()
       ).toBe('password','pass','1234');
     });
     test('return values should be larger than 90', ()=>{
-      expect(customFunct.filter(
+      expect(fp.filter(
         () => grades > 90,
         [95, 97.5, 81, 99, 23]
       ).toString()
@@ -109,22 +109,23 @@ describe('fp.js', () => {
     test('an exception should be thrown if error', ()=>{
       expect(
         () => {
-          customFunct.filter(
-            (x) => x+2,
-            ['1',2, null],
-            0);
-        }).toThrow();
-      expect(
-        () => {
-          customFunct.filter(
-            (x) => x+2,
-            1
+          fp.filter(
+            () => grades > 90,
+            ['kerry', 97.5, 'nicholas', 99, 23]
           );
         }).toThrow();
       expect(
         () => {
-          customFunct.filter(
-            'lets do this',
+          fp.filter(
+            () => grades > 90,
+            99
+          );
+
+        }).toThrow();
+      expect(
+        () => {
+          fp.filter(
+            'greater than 90',
             [1, 2, 3]
           );
         }).toThrow();
