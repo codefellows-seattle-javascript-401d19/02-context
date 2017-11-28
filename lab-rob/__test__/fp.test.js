@@ -9,6 +9,11 @@ describe('fp.js tests', () => {
         num => num * 2,
         [1, 2, 3]
       )).toEqual([2, 4, 6]);
+
+      expect(fp.map(
+        word => word + word,
+        ['hi', 'there']
+      )).toEqual(['hihi', 'therethere']);
     });
   });
 });
