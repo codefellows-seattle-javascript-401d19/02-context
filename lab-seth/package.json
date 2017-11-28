@@ -1,0 +1,22 @@
+{
+  "name": "lab-seth",
+  "version": "1.0.0",
+  "description": "lab 1 Node Excosystem",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "node",
+    "ecosystem"
+  ],
+  "author": "Seth Donohue",
+  "license": "MIT"
+}
