@@ -34,7 +34,7 @@ In each function error-check each parameter and throw an Error with a meaningful
 #### FP Module Tests
 Create a NodeJS module in the \_\_test\_\_/ named fp.test.js that asserts the correctness of the fp module.  
 
-* Use BDD `describe` and `test` methods to define descriptive tests 
+* Use TDD `describe` and `test` methods to define descriptive tests 
 * Each `test` callback should aim to test a small well defined feature of a function
 * Write tests to ensure the fp module functions correctly error-check parameters
   * Assert that the correct errors are thrown with invalid arguments
