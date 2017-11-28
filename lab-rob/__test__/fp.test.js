@@ -8,7 +8,7 @@ describe('fp.js tests', () => {
       expect(fp.map(
         num => num * 2,
         [1, 2, 3]
-      )).toBe([2, 4, 6]);
+      )).toEqual([2, 4, 6]);
     });
   });
 });
