@@ -56,15 +56,15 @@ describe('fp.js', () => {
       expect(customFunct.map(
         (x) => x+2,
         [1,2,3]
-      )
-      ).toBe([3,4,5]);
+      ).toString()
+      ).toBe('3,4,5');
     });
     test('return values should double', ()=>{
       expect(customFunct.map(
         (x) => x*2,
         [1,2,3]
-      )
-      ).toBe([2,4,6]);
+      ).toString()
+      ).toBe('2,4,6');
     });
     test('an exception should be thrown if error', ()=>{
       expect(
@@ -79,13 +79,6 @@ describe('fp.js', () => {
           customFunct.map(
             (x) => x+2,
             1
-          );
-        }).toThrow();
-      expect(
-        () => {
-          customFunct.map(
-            (x) => x+'a',
-            [1,2,3]
           );
         }).toThrow();
       expect(
