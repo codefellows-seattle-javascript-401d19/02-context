@@ -327,16 +327,17 @@ describe('fp.js tests', () => {
       }).toThrow();
     });
 
-    // test('If there are less than two arguments, an exception should be thrown.', () => {
-    //   expect(() => {
-    //     fp.reduce(
-    //       ele => ele
-    //     );
-    //   }).toThrow();
+    test('If there are less than three arguments, an exception should be thrown.', () => {
+      expect(() => {
+        fp.reduce(
+          ele => ele,
+          ''
+        );
+      }).toThrow();
 
-    //   expect(() => {
-    //     fp.reduce();
-    //   }).toThrow();
-    // });
+      expect(() => {
+        fp.reduce();
+      }).toThrow();
+    });
   });
 });
