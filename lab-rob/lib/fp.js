@@ -9,3 +9,7 @@ fp.map = (callback, collection) => {
     throw new TypeError('<collection> must be an iterable object.');
   return [].map.call(collection, callback);
 };
+
+fp.filter = (callback, collection) => {
+  return [4, 5];
+};

@@ -76,4 +76,15 @@ describe('fp.js tests', () => {
       }).toThrow();
     });
   });
+
+  describe('When called correctly, fp.filter should take in a callback function and an array / array - like object, and return an Array.', () => {
+    test('When given a valid callback function and an array, a filtered array should be returned.', () => {
+      expect(
+        fp.filter(
+          num => num > 3,
+          [1, 2, 3, 4, 5]
+        )
+      ).toEqual([4, 5]);
+    });
+  });
 });
