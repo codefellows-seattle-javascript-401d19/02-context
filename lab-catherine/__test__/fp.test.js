@@ -2,7 +2,9 @@
 
 const fp = require('../lib/fp');
 
+//++++++++++++++++++++++++++++++++++++
 // catherine - fp.map test functions
+//++++++++++++++++++++++++++++++++++++
 
 describe('fp.test.js', () => {
 
@@ -17,6 +19,15 @@ describe('fp.test.js', () => {
 
   describe(('testing to see if fp.map contains invalid input'), () => {
     
+    test('will an error be thrown with an invalid callback', () => {
+      expect(() => {
+        fp.map('a', 
+          [1, 2, 3]
+        );
+      }
+      ).toThrow();
+    });
+
     test('testing that .map collection must be an object', () => {
       expect(() => {
         fp.map(a => a * 3, 
@@ -47,14 +58,20 @@ describe('fp.test.js', () => {
     });
   });
 
+  //++++++++++++++++++++++++++++++++++++
   // catherine - fp.filter test functions
+  //++++++++++++++++++++++++++++++++++++
 
-  describe(('fp.filter'), () => {
+  describe(('testing to see if fp.filter is functioning as expected'), () => {
     test('testing that .filter is functioning properly', () => {
       expect(fp.filter(a => a < 3,
         [1, 2, 3]
       )).toEqual([1, 2]);
     });
+  });
+
+  describe(('testing to see if fp.filter contains invalid input'), () => {
+
     test('testing that .filter callback must be a function', () => {
       expect(() => {
         fp.filter('a', 
@@ -63,6 +80,7 @@ describe('fp.test.js', () => {
       }
       ).toThrow();
     });
+
     test('testing that .filter collection must be an object', () => {
       expect(() => {
         fp.filter(a => a * 3, 
@@ -71,16 +89,20 @@ describe('fp.test.js', () => {
       }
       ).toThrow();
     });
-    test('testing that .filter will return an empty array as an empty array', () => {
-      expect(fp.filter(a => a * 3,
-        []
-      )).toEqual([]);
+
+    test('testing that .filter will throw an error if empty', () => {
+      expect(() => {
+        fp.filter(a => a * 3,
+          []
+        );
+      }
+      ).toThrow();
     });
+
     test('testing that .filter will throw an error if passed a value that is not a number', () => {
       expect(() => {
         fp.filter(a => {
           a * 3;
-          if(typeof a !== 'number') throw new TypeError('array can only include numbers');
         },
         [null, null, 3]
         );
@@ -89,7 +111,9 @@ describe('fp.test.js', () => {
     });
   });
 
+  //++++++++++++++++++++++++++++++++++++
   // catherine - fp.reduce test functions
+  //++++++++++++++++++++++++++++++++++++
 
   describe(('fp.reduce'), () => {
     test('testing that .reduce is functioning properly', () => {
