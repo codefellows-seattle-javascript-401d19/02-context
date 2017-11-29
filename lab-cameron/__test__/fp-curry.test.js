@@ -37,9 +37,9 @@ describe('fp.js', () => {
       ).toThrow();
     });
 
-    test('throw an exception if collection is not an array', () => {
+    test('throw an exception if collection is not an array-like object', () => {
       const callback = element => { return element; };
-      const collection = 'not an array';
+      const collection = 2;
       expect(
         () => {
           map(callback)(collection);
@@ -81,9 +81,9 @@ describe('fp.js', () => {
       ).toThrow();
     });
 
-    test('throw an exception if collection is not an array', () => {
+    test('throw an exception if collection is not an array-like object', () => {
       const callback = element => { return element.length > 5; };
-      const collection = 'not an array';
+      const collection = 2;
       expect(
         () => {
           filter(callback)(collection);
@@ -130,10 +130,10 @@ describe('fp.js', () => {
       ).toThrow();
     });
 
-    test('throw an exception if collection is not an array', () => {
+    test('throw an exception if collection is not an array-like object', () => {
       const callback = (acc, current) => { return acc + current; };
       const initialState = '';
-      const collection = 'not an array';
+      const collection = 2;
       expect(
         () => {
           reduce(callback)(initialState)(collection);
@@ -156,10 +156,10 @@ describe('fp.js', () => {
       expect(result).toEqual(expected);
     });
 
-    test('throw an exception if collection is not an array', () => {
+    test('throw an exception if collection is not an array-like object', () => {
       const begin = 1;
       const end = 3;
-      const collection = 'not an array';
+      const collection = 2;
       expect(
         () => {
           slice(begin)(end)(collection);

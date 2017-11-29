@@ -8,9 +8,9 @@ fp.map =
       if (typeof callback !== 'function') {
         throw new TypeError('<callback> should be a function');
       }
-      
-      if (!Array.isArray(collection)) {
-        throw new TypeError('<collection> should be an array');
+
+      if (!collection.hasOwnProperty('length')) {
+        throw new TypeError('<collection> should be an array-like object');
       }
 
       return Array.prototype.map.call(collection, callback);
@@ -24,8 +24,8 @@ fp.filter =
         throw new TypeError('<callback> should be a function');
       }
 
-      if (!Array.isArray(collection)) {
-        throw new TypeError('<collection> should be an array');
+      if (!collection.hasOwnProperty('length')) {
+        throw new TypeError('<collection> should be an array-like object');
       }
 
       return Array.prototype.filter.call(collection, callback);
@@ -39,8 +39,8 @@ fp.reduce =
           throw new TypeError('<callback> should be a function');
         }
 
-        if (!Array.isArray(collection)) {
-          throw new TypeError('<collection> should be an array');
+        if (!collection.hasOwnProperty('length')) {
+          throw new TypeError('<collection> should be an array-like object');
         }
 
         return Array.prototype.reduce.call(collection, callback, initialState);
@@ -50,8 +50,8 @@ fp.slice =
   begin =>
     end =>
       collection => {
-        if (!Array.isArray(collection)) {
-          throw new TypeError('<collection> should be an array');
+        if (!collection.hasOwnProperty('length')) {
+          throw new TypeError('<collection> should be an array-like object');
         }
 
         return Array.prototype.slice.call(collection, begin, end);
