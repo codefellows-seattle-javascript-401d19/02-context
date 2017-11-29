@@ -97,7 +97,7 @@ describe('fp.js', () => {
         (password) => password.length > 6,
         ['password','pass','1234']
       ).toString()
-      ).toBe('password','pass','1234');
+      ).toBe('password');
     });
     test('return values should be larger than 90', ()=>{
       expect(fp.filter(
