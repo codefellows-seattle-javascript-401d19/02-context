@@ -36,6 +36,10 @@ fp.filter = (callback, collection) => {
   return [].filter.call(collection, callback);
 };
 
+fp.reduce = (callback, initialState, collection) => {
+  return [].reduce.call(collection, callback, initialState);
+};
+
 let isIterable = object => object.length !== undefined;
 let isFunction = object => typeof object === 'function';
 let isString = object => typeof object === 'string';
