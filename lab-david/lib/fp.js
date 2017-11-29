@@ -17,6 +17,11 @@ fp.map = (callback, collection) => {
 fp.filter = (callback, collection) => {
   if(typeof callback !== 'function')
     throw new TypeError('<callback> should be a function!');
-  return Array.prototype.filter.(collection, callback);
+  return Array.prototype.filter.call(collection, callback);
 };
 
+fp.slice = (begin, end, collection) => {
+  if(typeof callback !== 'function')
+    throw new TypeError('<callback> should be a function foo');
+  return Array.prototype.slice.call(begin, end, collection);
+};
