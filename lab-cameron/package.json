@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/CameronMoorehead/02-context#readme",
   "devDependencies": {
+    "eslint": "^4.12.0",
     "jest": "^21.2.1"
   }
 }
