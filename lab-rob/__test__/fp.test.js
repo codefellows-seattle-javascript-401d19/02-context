@@ -309,18 +309,20 @@ describe('fp.js tests', () => {
       ).toBe('I am super tired!');
     });
 
-    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+    test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.reduce(
-          ele => ele,
-          456
+          '(accumulator, currentValue) => accumulator + (Number(currentValue) - 3)',
+          '',
+          '1234567890'
         );
       }).toThrow();
 
       expect(() => {
         fp.reduce(
-          ele => ele,
-          null
+          (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
+          '',
+          1234567890
         );
       }).toThrow();
     });

@@ -37,6 +37,8 @@ fp.filter = (callback, collection) => {
 };
 
 fp.reduce = (callback, initialState, collection) => {
+  fp.correctType(callback, 'A function', isFunction);
+  fp.correctType(collection, 'An iterable object', isIterable);
   return [].reduce.call(collection, callback, initialState);
 };
 
