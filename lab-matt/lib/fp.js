@@ -16,5 +16,5 @@ fp.reduce = (callback, collection) => {
 };
 
 fp.slice = (callback, collection) => {
-  return Array.prototype.slice.call(collection, callback);
+  // return Array.prototype.slice.call(collection, callback);
 };

@@ -6,24 +6,23 @@ describe('fp.js', () => {
   // ---------------------------------------------
   //  fp.map
   // ---------------------------------------------
-  describe('fp.map - (map multiplies each element by 2)', () => {
-    test('[0, 1, 2] => [0, 2, 4]', () => {
-      expect(fp.map(currentElement => currentElement * 2,
-        [0, 1, 2])).toEqual([0,2,4]);
+  describe('fp.map', () => {
+    const multiplyByTwo = function(currentElement) {
+      if (typeof(currentElement) !== 'number') throw new TypeError('array can only include numbers');
+      return currentElement * 2;
+    };
+
+    test('multiply by two - [0, 1, 2] => [0, 2, 4]', () => {
+      expect(fp.map(multiplyByTwo, [0, 1, 2])).toEqual([0, 2, 4]);
     });
 
-    test('empty array returns an empty array', () => {
-      expect(fp.map(currentElement => currentElement * 2,
-        [])).toEqual([]);
+    test('multiply by two - empty array returns an empty array', () => {
+      expect(fp.map(multiplyByTwo, [])).toEqual([]);
     });
 
-    test('if any element is not a number will throw an error', () => {
+    test('multiply by two - if any element is not a number will throw an error', () => {
       expect(() => {
-        fp.map(currentElement => {
-          if (typeof(currentElement) !== 'number') throw new TypeError('array can only include numbers');
-          return currentElement * 2;
-        },
-        [1, 4, null]);
+        fp.map(multiplyByTwo, [1, 4, null]);
       }).toThrow();
     });
   });
@@ -33,8 +32,12 @@ describe('fp.js', () => {
   // ---------------------------------------------
   describe('fp.filter - (returns previous array with only the words that are longer than 5 letters)', () => {
     const words = ['foobar', 'truthy', 'falsy', 'true', 'one'];
-    test(`['foobar', 'truthy', 'falsy', 'true', 'one'] => ['foobar', 'truthy']`, () => {
-      expect(fp.filter((currentElement) => currentElement.length > 5, words)).toEqual(['foobar', 'truthy']);
+    const filterWordsOverFive = function(currentElement) {
+      return currentElement.length > 5;
+    };
+
+    test(`words over five characters - ['foobar', 'truthy', 'falsy', 'true', 'one'] => ['foobar', 'truthy']`, () => {
+      expect(fp.filter(filterWordsOverFive, words)).toEqual(['foobar', 'truthy']);
     });
   });
 
