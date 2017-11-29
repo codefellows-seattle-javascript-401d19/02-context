@@ -25,3 +25,9 @@ fp.reduce = (callback, collection, initialValue) => {
     throw new TypeError('<initialValue> is not a number')
   return Array.prototype.reduce.call(collection, callback, initialValue);
 };
+
+fp.slice = (begin, end, collection) => {
+  if(typeof begin !== 'number')
+    throw new TypeError('<begin> value is not a number');
+  return Array.prototype.slice.call(collection, begin, end);
+};

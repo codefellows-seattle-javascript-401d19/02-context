@@ -6,7 +6,6 @@ describe('fp.js', () => {
 
   // testing fp.map function
   describe('fp.map', () => {
-
     test('returns array with values multiplied with 2', () => {
       expect(fp.map(
         (num) => num * 2,
@@ -31,7 +30,6 @@ describe('fp.js', () => {
 
   // testing fp.filter function
   describe('fp.filter', () => {
-
     test('return value should be number higher than 3', () => {
       expect(fp.filter(
         (num) => num > 3,
@@ -56,7 +54,6 @@ describe('fp.js', () => {
 
   // testing fp.reduce function
   describe('fp.reduce', () => {
-
     test('return value should be sum of the collection if callback is adding them', () => {
       expect(fp.reduce(
         (accu, curr) => {
@@ -84,6 +81,21 @@ describe('fp.js', () => {
         }
       ).toThrow();
     });
+  });
+
+  //testing fp.slice function
+  describe('fp.slice', () => {
+    test('return new array with first 3 items of an existing array', () => {
+      expect(fp.slice(0, 3, [0, 1, 2, 3, 4])).toEqual([0, 1, 2]);
+    });
+    test('exception will be thrown if error occurs', () => {
+      expect(
+        () => {
+          fp.slice('negaiveNumber', -1, [0, 1, 2])
+        }
+      ).toThrow();
+    });
+
   });
 
 });
