@@ -1,0 +1,30 @@
+{
+  "name": "lab-cameron",
+  "version": "1.0.0",
+  "description": "context lab assignment",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest -i --coverage || exit 0",
+    "lint": "eslint **/*.js || exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CameronMoorehead/02-context.git"
+  },
+  "keywords": [
+    "codefellow"
+  ],
+  "author": "Cameron",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CameronMoorehead/02-context/issues"
+  },
+  "homepage": "https://github.com/CameronMoorehead/02-context#readme",
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "jest": "^21.2.1"
+  }
+}
