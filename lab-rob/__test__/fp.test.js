@@ -127,17 +127,17 @@ describe('fp.js tests', () => {
       ).toEqual(['I', 'USE', 'SPREAD!']);
     });
 
-    // test('When called with an empty collection, fp.map() should return an empty array', () => {
-    //   expect(fp.map(
-    //     num => num * 2,
-    //     [1, 2, 3]
-    //   )).toEqual([2, 4, 6]);
+    test('When called with an empty collection, fp.map() should return an empty array', () => {
+      expect(fp.map(
+        num => num * 2,
+        []
+      )).toEqual([]);
 
-    //   expect(fp.map(
-    //     word => word + word,
-    //     ['hi', 'there']
-    //   )).toEqual(['hihi', 'therethere']);
-    // });
+      expect(fp.map(
+        word => word + word,
+        ''
+      )).toEqual([]);
+    });
 
     test('When called with a non-array, but iterable object, like a string, the object should be returned as an array with its elements acted upon.', () => {
       expect(fp.map(
@@ -233,6 +233,18 @@ describe('fp.js tests', () => {
       ).toEqual([1, '1', true]);
     });
 
+    test('When called with an empty collection, fp.filter() should return an empty array', () => {
+      expect(fp.filter(
+        num => num * 2,
+        []
+      )).toEqual([]);
+
+      expect(fp.filter(
+        word => word + word,
+        ''
+      )).toEqual([]);
+    });
+
     test('If the first argument is not a function, or the second argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.filter(
@@ -321,6 +333,20 @@ describe('fp.js tests', () => {
       ).toBe('I am super tired!');
     });
 
+    test('When called with an empty collection, fp.reduce() should return the initialState argument', () => {
+      expect(fp.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        '',
+        []
+      )).toBe('');
+
+      expect(fp.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        9,
+        ''
+      )).toBe(9); 
+    });
+
     test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.reduce(
@@ -349,6 +375,118 @@ describe('fp.js tests', () => {
 
       expect(() => {
         fp.reduce();
+      }).toThrow();
+    });
+  });
+
+  describe('When called correctly, fp.slice should take in a beginning value, an ending value, and an array / array - like object, and return an array with the requested values.', () => {
+    test('When given a valid starting value, ending value, and array, an array should be returned.', () => {
+      expect(
+        fp.slice(
+          0,
+          3,
+          [1, 2, 3, 4, 5]
+        )
+      ).toEqual([1, 2, 3]);
+
+      expect(
+        fp.slice(
+          2,
+          4,
+          [1, 2, 3, 4, 5]
+        )
+      ).toEqual([3, 4]);
+    });
+
+    test('When given a valid starting value, ending value, and a string, an array should be returned.', () => {
+      expect(
+        fp.slice(
+          2,
+          4,
+          'hey there boss'
+        )
+      ).toEqual(['y', ' ']);
+
+      expect(
+        fp.slice(
+          4,
+          5,
+          'hey there boss'
+        )
+      ).toEqual(['t']);
+    });
+
+    test('When given a valid starting value, ending value, and an array-like object, such as arguments or args, an array should be returned.', () => {
+      expect(
+        (function() {
+          return fp.slice(
+            1,
+            2,
+            arguments
+          );
+        })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+      ).toEqual([2]);
+
+      expect(
+        ((...args) => {
+          return fp.slice(
+            5,
+            10,
+            args
+          );
+        })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
+      ).toEqual(['s', 'u', 'p', 'e', 'r']);
+    });
+
+    test('When called with an empty collection, or when begin === end, fp.slice() should return an empty array', () => {
+      expect(fp.slice(
+        0,
+        0,
+        []
+      )).toEqual([]);
+
+      expect(fp.slice(
+        4,
+        4,
+        [1, 2, 3, 4, 5, 6]
+      )).toEqual([]);
+    });
+
+    test('If the first argument or second argument is not a number, or the third argument is not an iterable object, an exception should be thrown.', () => {
+      expect(() => {
+        fp.slice(
+          'r',
+          2,
+          [1, 2, 3]
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.slice(
+          0,
+          '2',
+          [1, 2, 3]
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.slice(
+          0,
+          1,
+          3
+        );
+      }).toThrow();
+    });
+
+    test('If there are less than three arguments, an exception should be thrown.', () => {
+      expect(() => {
+        fp.slice(
+          'goodnight'
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.slice();
       }).toThrow();
     });
   });

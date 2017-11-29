@@ -43,6 +43,15 @@ fp.reduce = (callback, initialState, collection) => {
   return [].reduce.call(collection, callback, initialState);
 };
 
+fp.slice = (begin, end, collection) => {
+  fp.enoughArgs('fp.slice()', begin, end, collection);
+  fp.correctType(begin, 'A number', isNumber);
+  fp.correctType(end, 'A number', isNumber);
+  fp.correctType(collection, 'An iterable object', isIterable);
+  return [].slice.call(collection, begin, end);
+};
+
 let isIterable = object => object.length !== undefined;
 let isFunction = object => typeof object === 'function';
 let isString = object => typeof object === 'string';
+let isNumber = object => typeof object === 'number';
