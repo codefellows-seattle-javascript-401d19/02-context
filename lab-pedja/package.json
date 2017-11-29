@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest -i --coverage",
-    "lint": "eslint **/*.js"
+    "lint": "eslint fp.test.js"
   },
   "author": "Pedja",
   "license": "ISC",
