@@ -7,6 +7,9 @@ fp.map = (callback, collection) => {
   if(typeof callback !== 'function')
     throw new TypeError('<callback> should be a function');
 
+  if(!Array.isArray(collection))
+    throw new TypeError('<collection> should be an array or array of objects/object');
+
   return Array.prototype.map.call(collection, callback);
 };
 
