@@ -97,16 +97,26 @@ describe('fp.js', () => {
       const callback = (acc, current) => { return acc + current; };
       const initialState = 0;
       const collection = [1, 2, 3, 4];
+
+      const addAllElements = reduce(callback);
+      const stateProvided = addAllElements(initialState);
+      const result = stateProvided(collection);
       const expected = 10;
-      expect(reduce(callback, initialState, collection)).toBe(expected);
+
+      expect(result).toBe(expected);
     });
 
     test('return a single word from an array of words', () => {
       const callback = (acc, current) => { return acc + current; };
       const initialState = '';
       const collection = ['hello', 'there', 'world', '!'];
+
+      const singleWord = reduce(callback);
+      const stateProvided = singleWord(initialState);
+      const result = stateProvided(collection);
       const expected = 'hellothereworld!';
-      expect(reduce(callback, initialState, collection)).toBe(expected);
+
+      expect(result).toBe(expected);
     });
 
     test('throw an exception if callback is not a function', () => {
@@ -115,7 +125,7 @@ describe('fp.js', () => {
       const collection = [1, 2, 3, 4];
       expect(
         () => {
-          reduce(callback, initialState, collection);
+          reduce(callback)(initialState)(collection);
         }
       ).toThrow();
     });
@@ -126,7 +136,7 @@ describe('fp.js', () => {
       const collection = 'not an array';
       expect(
         () => {
-          reduce(callback, initialState, collection);
+          reduce(callback)(initialState)(collection);
         }
       ).toThrow();
     });
@@ -137,8 +147,13 @@ describe('fp.js', () => {
       const begin = 1;
       const end = 3;
       const collection = [1, 2, 3, 4];
+
+      const startIndex = slice(begin);
+      const endIndex = startIndex(end);
+      const result = endIndex(collection);
       const expected = [2, 3];
-      expect(slice(begin, end, collection)).toEqual(expected);
+
+      expect(result).toEqual(expected);
     });
 
     test('throw an exception if collection is not an array', () => {
@@ -147,7 +162,7 @@ describe('fp.js', () => {
       const collection = 'not an array';
       expect(
         () => {
-          slice(begin, end, collection);
+          slice(begin)(end)(collection);
         }
       ).toThrow();
     });

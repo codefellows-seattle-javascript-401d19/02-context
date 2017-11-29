@@ -42,22 +42,28 @@ fp.filter =
       return Array.prototype.filter.call(collection, callback);
     };
 
-fp.reduce = (callback, initialState, collection) => {
-  if (typeof callback !== 'function') {
-    throw new TypeError('<callback> should be a function');
-  }
+fp.reduce =
+  callback =>
+    initialState =>
+      collection => {
+        if (typeof callback !== 'function') {
+          throw new TypeError('<callback> should be a function');
+        }
 
-  if (!Array.isArray(collection)) {
-    throw new TypeError('<collection> should be an array');
-  }
+        if (!Array.isArray(collection)) {
+          throw new TypeError('<collection> should be an array');
+        }
 
-  return Array.prototype.reduce.call(collection, callback, initialState);
-};
+        return Array.prototype.reduce.call(collection, callback, initialState);
+      };
 
-fp.slice = (begin, end, collection) => {
-  if (!Array.isArray(collection)) {
-    throw new TypeError('<collection> should be an array');
-  }
+fp.slice =
+begin =>
+  end =>
+    collection => {
+      if (!Array.isArray(collection)) {
+        throw new TypeError('<collection> should be an array');
+      }
 
-  return Array.prototype.slice.call(collection, begin, end);
-};
+      return Array.prototype.slice.call(collection, begin, end);
+    };
