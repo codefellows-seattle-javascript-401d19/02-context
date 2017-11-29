@@ -10,8 +10,9 @@ describe('fp.reduce', () => {
       },
       [1,2,3],
       0
-    )).toBe(6);
+    )).toEqual(6);
   });
+
   test('In Reduce Exception Thrown If Callback Is Not A Function', () => {
     expect(
       () => {
@@ -22,16 +23,41 @@ describe('fp.reduce', () => {
 });
 
 
-describe('fp.mapGenerator', () => {
-  test('should return value of aggregated values', () => {
-    expect(fp.mapGenerator(1,2,3,4).toBe(2,3,4,5));
-  }); 
+describe('fp.map', () => {
+  test('Should return a new collection with each element changed', () => {
+    expect(fp.map(
+      (currentValue) => {
+        return currentValue + 1; 
+      },
+      [1,2,3,4]
+    )).toEqual([2,3,4,5]);
+  });
 });
 
-describe('fp.map', () => {
-  
-  test('should change each element in the array and return a mutated array', () => {
-    
+test('In Map Exception Thrown If Callback Is Not A Function', () => {
+  expect(
+    () => {
+      fp.map('Not a Function', [1,2,3,4]);
+    }
+  ).toThrow();
+}); 
+
+
+describe('fp.filter', () => {
+  test('Should return a new collection with each element changed', () => {
+    expect(fp.filter(
+      (currentValue) => {
+        return currentValue > 2; 
+      },
+      [1,2,3,4]
+    )).toEqual([3,4]);
   });
-  
-})
+});
+
+test('In Filter Exception Thrown If Callback Is Not A Function', () => {
+  expect(
+    () => {
+      fp.filter('Not a Function', [1,2,3,4]);
+    }
+  ).toThrow();
+}); 
