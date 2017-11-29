@@ -200,7 +200,7 @@ describe(('testing to see if fp.slice is functioning as expected'), () => {
 
   describe(('testing to see if fp.slice contains invalid input'), () => {
 
-    test('testing that .reduce collection must be an object', () => {
+    test('testing that .slice collection must be an object', () => {
       expect(() => {
         fp.slice(
           'hello',
@@ -211,7 +211,7 @@ describe(('testing to see if fp.slice is functioning as expected'), () => {
       ).toThrow();
     });
 
-    test('testing that .reduce will throw an error if empty', () => {
+    test('testing that .slice will throw an error if empty', () => {
       expect(() => {
         fp.slice(
           [],
