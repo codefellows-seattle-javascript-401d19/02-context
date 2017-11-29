@@ -13,12 +13,12 @@ The `fp.filter` method uses the `call` method to create a new array by using the
 
 expected data is words over `.length` of 5 to be filtered and numbers over fifty.
 
-### fp.reduce(callback, collection)
+### fp.reduce(callback, initialState, collection)
 The `fp.reduce` method uses the `call` method to reduce an array into a single data by using the `array.prototype.reduce` method that takes an arity of three which one is the array, another is a callback function defining how the array should reduce, and the third is the initial state of the reduced array.
 
 expected data is the sum of numbers and concatenated strings with spaces.
 
-### fp.slice(callback, collection)
+### fp.slice(begin, end, collection)
 The `fp.slice` method uses the `call` method to create a new array by removing certain sections of the array with the `array.prototype.slice` method that takes an arity of three which one is the starting point of the slice, the second is the end point of the slice, and the third is the array to be sliced.
 
 expected data is removal of outer elements of an array and removal of all elements in an array.
