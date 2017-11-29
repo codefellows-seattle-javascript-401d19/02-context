@@ -23,3 +23,10 @@ fp.filter = (callback, collection) => {
   return Array.prototype.filter.call(collection,callback);
 };
 
+fp.slice = (begin, end, collection) => {
+  console.log(collection);
+  if (typeof collection !== 'object')
+    throw new TypeError('<Callback> Not A Function');
+
+  return Array.prototype.slice.call(collection, begin, end);
+};

@@ -22,7 +22,6 @@ describe('fp.reduce', () => {
   }); 
 });
 
-
 describe('fp.map', () => {
   test('Should return a new collection with each element changed', () => {
     expect(fp.map(
@@ -42,9 +41,8 @@ test('In Map Exception Thrown If Callback Is Not A Function', () => {
   ).toThrow();
 }); 
 
-
 describe('fp.filter', () => {
-  test('Should return a new collection with each element changed', () => {
+  test('Should return a new collection with only elements that passed conditional test as true', () => {
     expect(fp.filter(
       (currentValue) => {
         return currentValue > 2; 
@@ -58,6 +56,26 @@ test('In Filter Exception Thrown If Callback Is Not A Function', () => {
   expect(
     () => {
       fp.filter('Not a Function', [1,2,3,4]);
+    }
+  ).toThrow();
+}); 
+
+describe('fp.slice', () => {
+  test('Should return a new collection with elements at ', () => {
+    expect(fp.slice(
+      (begin, end, collection) => {
+       
+        
+      },
+      [1,2,3,4] //1,3 
+    )).toEqual([2,3]);
+  });
+});
+
+test('In Slice Exception Thrown If Callback Is Not A Function', () => {
+  expect(
+    () => {
+      fp.slice('Not a Function', [1,2,3,4]);
     }
   ).toThrow();
 }); 
