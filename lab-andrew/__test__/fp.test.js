@@ -138,6 +138,17 @@ describe('fp.test.js', () => {
       expect(noRedArr).toThrow();
     });
 
+    test('is an error thrown with invalid accumulator', () => {
+      const badAcc = () => {
+        fp.reduce(
+          (a, c) => a + c,
+          [1, 2, 3],
+          'a'
+        );
+      };
+      expect(badAcc).toThrow();
+    });
+
     test('is an error thrown with invalid callback', () => {
       const badRed = () => {
         fp.reduce(
@@ -168,7 +179,7 @@ describe('fp.test.js', () => {
 
   describe('testing invalid input for fp.slice', () => {
 
-    test('if a start or end value is supplied, it must be an integer', () => {
+    test('if a start or end value is supplied, it must be an integer not longer than array.length', () => {
       const newSli = () => {
         fp.slice(
           [1, 2, 3],
@@ -182,9 +193,16 @@ describe('fp.test.js', () => {
           ['boop', 'lololololol']
         );
       };
+      const newSli3 = () => {
+        fp.slice(
+          [1, 2, 3],
+          4
+        );
+      };
 
       expect(newSli).toThrow();
       expect(newSli2).toThrow();
+      expect(newSli3).toThrow();
     });
 
     test('is an error thrown with an invalid collection', () => {
@@ -194,6 +212,12 @@ describe('fp.test.js', () => {
         );
       };
       expect(badSli).toThrow();
+      const noSliArr = () => {
+        fp.slice(
+          []
+        );
+      };
+      expect(noSliArr).toThrow();
     });
   });
 });
