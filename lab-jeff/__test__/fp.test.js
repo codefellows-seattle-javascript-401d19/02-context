@@ -43,3 +43,32 @@ describe('fp.js', () => {
     });
   });
 });
+
+describe('fp.js', () => {
+  describe('fp.reduce', () => {
+    test('reduce should return value of sum of the collection', () => {
+      expect(fp.reduce( (acc, curr) => {
+        return acc + curr;
+      },
+      [1,2,3],
+      0)).toEqual(6);
+    });
+    test('reduce should return exception if first input is not a function', () => {
+      expect( () => {
+        fp.reduce(('not a function', [1,2,3], 0)).toThrow();
+      });
+    });
+    test('reduce should return exception if 2nd input is not iterable', () => {
+      expect( () => {
+        fp.reduce( (acc, curr) => {
+          return acc + curr;
+        }, true, 0);
+      }).toThrow();
+      expect( () => {
+        fp.reduce( (acc, curr) => {
+          return acc + curr;
+        }, null, 0);
+      }).toThrow();
+    });
+  });
+});

@@ -13,3 +13,9 @@ fp.filter = (callback, collection) => {
     throw new TypeError('<collection> should be a string or array');
   return Array.prototype.filter.call(collection, callback);
 };
+
+fp.reduce = (callback, collection, initValue) => {
+  if (!collection.length)
+    throw new TypeError('<collection> should be a string or array');
+  return Array.prototype.reduce.call(collection, callback, initValue);
+};
