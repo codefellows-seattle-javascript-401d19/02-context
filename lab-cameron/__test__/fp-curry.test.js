@@ -1,6 +1,6 @@
 'use strict';
 
-const { map, filter, reduce, slice } = require('../lib/fp');
+const { map, filter, reduce, slice } = require('../lib/fp-curry');
 
 describe('fp.js', () => {
 
@@ -8,15 +8,23 @@ describe('fp.js', () => {
     test('return an array with each element multiplied by 2', () => {
       const callback = element => { return element * 2; };
       const collection = [1, 2, 3];
+
+      const multiplyBy2 = map(callback);
+      const result = multiplyBy2(collection);
       const expected = [2, 4, 6];
-      expect(map(callback, collection)).toEqual(expected);
+
+      expect(result).toEqual(expected);
     });
 
     test('return an array with each string element doubled', () => {
       const callback = element => { return element.concat(element); };
       const collection = ['hello', 'there', 'world', '!'];
+
+      const doubleString = map(callback);
+      const result = doubleString(collection);
       const expected = ['hellohello', 'therethere', 'worldworld', '!!'];
-      expect(map(callback, collection)).toEqual(expected);
+
+      expect(result).toEqual(expected);
     });
 
     test('throw an exception if callback is not a function', () => {
@@ -24,7 +32,7 @@ describe('fp.js', () => {
       const collection = [1, 2, 3];
       expect(
         () => {
-          map(callback, collection);
+          map(callback)(collection);
         }
       ).toThrow();
     });
@@ -34,7 +42,7 @@ describe('fp.js', () => {
       const collection = 'not an array';
       expect(
         () => {
-          map(callback, collection);
+          map(callback)(collection);
         }
       ).toThrow();
     });
@@ -44,15 +52,23 @@ describe('fp.js', () => {
     test('return an array without even numbers', () => {
       const callback = element => { return element % 2; };
       const collection = [1, 2, 3, 4, 5, 6];
+
+      const filterEvens = filter(callback);
+      const result = filterEvens(collection);
       const expected = [1, 3, 5];
-      expect(filter(callback, collection)).toEqual(expected);
+
+      expect(result).toEqual(expected);
     });
 
     test('return an array with strings only with length greater than 5', () => {
       const callback = element => { return element.length > 5; };
       const collection = ['one', 'three', 'sixteen'];
+
+      const filterShortStrings = filter(callback);
+      const result = filterShortStrings(collection);
       const expected = ['sixteen'];
-      expect(filter(callback, collection)).toEqual(expected);
+
+      expect(result).toEqual(expected);
     });
 
     test('throw an exception if callback is not a function', () => {
@@ -60,7 +76,7 @@ describe('fp.js', () => {
       const collection = [1, 2, 3, 4, 5, 6];
       expect(
         () => {
-          filter(callback, collection);
+          filter(callback)(collection);
         }
       ).toThrow();
     });
@@ -70,7 +86,7 @@ describe('fp.js', () => {
       const collection = 'not an array';
       expect(
         () => {
-          filter(callback, collection);
+          filter(callback)(collection);
         }
       ).toThrow();
     });
