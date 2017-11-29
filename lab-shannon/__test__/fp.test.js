@@ -52,6 +52,11 @@ describe(`fp.test.js`, () => {
         fp.slice(-1, 3, [`do`, `you`, `like`, `coding`])
       }).toThrow();
     })
+    test(`fp.slice should throw an error if stop is not a positive number`, () => {
+      expect(() => {
+        fp.slice(1, -3, [`do`, `you`, `like`, `coding`])
+      }).toThrow();
+    })
   })
 
   describe(`fp.reduce`, () => {
@@ -72,6 +77,11 @@ describe(`fp.test.js`, () => {
       expect(() => {
         fp.reduce((accumulator, currentValue) => {return accumulator + currentValue}, [0,1,2], 'banana')
       }).toThrow();
+    })
+    test(`fp.reduce should throw an error if one of the elements in the collection is not a number`, () => {
+      expect(() => {
+        fp.reduce((accumulator, currentValue) => {return accumulator + currentValue}, [1,2,`pie`], 0
+      )}).toThrow();
     })
   })
 });

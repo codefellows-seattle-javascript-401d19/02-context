@@ -31,6 +31,9 @@ fp.slice = (start, stop, collection) => {
   else if (typeof start !== `number` || start < 0){
     throw new Error(`Start must be a positive whole number`)
   }
+  else if (typeof stop !== `number` || stop < 0){
+    throw new Error(`Start must be a positive whole number`)
+  }
 
   return Array.prototype.slice.call(collection, start, stop);
 }
@@ -44,6 +47,11 @@ fp.reduce = (callback, collection, initialValue) => {
   }
   else if (typeof initialValue !== `number`){
     throw new TypeError(`The accumulator must be a number`);
+  }
+  else if (!collection.every((num) => {
+    return typeof num === `number`;
+  })){
+    throw new Error(`All elements of the array must be a number`);
   }
 
   return Array.prototype.reduce.call(collection, callback, initialValue)
