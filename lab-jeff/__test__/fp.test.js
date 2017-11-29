@@ -11,8 +11,7 @@ describe('fp.js', () => {
     test('map should return exception if first input is not a function', () => {
       expect( () => {
         fp.map('not a function', [1,2,3]);
-      }
-      ).toThrow();
+      }).toThrow();
     });
     test('map should return exception if 2nd input is not an array or string', () => {
       expect( () => {
@@ -23,6 +22,24 @@ describe('fp.js', () => {
         fp.map(x => x * 2, null);
       }
       ).toThrow();
+    });
+  });
+});
+
+describe('fp.js', () => {
+  describe('fp.filter', () => {
+    test('filter should return an array of items which pass the callback', () => {
+      expect(fp.filter(x => x.length > 5, ['cat', 'dog', 'elephant'])).toEqual(['elephant']);
+    });
+    test('filter should return exception if first input is not a function', () => {
+      expect( () => {
+        fp.filter('not a function', ['cat', 'dog', 'elephant']);
+      }).toThrow();
+    });
+    test('filter should return exception if 2nd input is not iterable', () => {
+      expect( () => {
+        fp.filter(x => x.length > 5, true);
+      }).toThrow();
     });
   });
 });
