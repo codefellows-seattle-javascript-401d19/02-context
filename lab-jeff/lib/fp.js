@@ -19,3 +19,9 @@ fp.reduce = (callback, collection, initValue) => {
     throw new TypeError('<collection> should be a string or array');
   return Array.prototype.reduce.call(collection, callback, initValue);
 };
+
+fp.slice = (begin, end, collection) => {
+  if (!collection.length)
+    throw new TypeError('<collection> should be a string or array');
+  return Array.prototype.slice.call(collection, begin, end);
+};

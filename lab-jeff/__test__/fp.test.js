@@ -72,3 +72,27 @@ describe('fp.js', () => {
     });
   });
 });
+
+describe('fp.js', () => {
+  describe('fp.slice', () => {
+    test('slice should return a portion of the given array from begin to end', () => {
+      expect(fp.slice(0, 2, ['cat', 'dog', 'elephant'])).toEqual(['cat', 'dog']);
+    });
+    test('slice throws an exception if the first or second arguments are not integers', () => {
+      expect( () => {
+        fp.slice((1.2, 2, ['cat', 'dog', 'elephant'])).toThrow();
+      });
+      expect( () => {
+        fp.slice((1, '', ['cat', 'dog', 'elephant'])).toThrow();
+      });
+    });
+    test('slice throws an exception if the 3rd argument is not iterable', () => {
+      expect( () => {
+        fp.slice((0, 2, 1)).toThrow();
+      });
+      expect( () => {
+        fp.slice((0, 2, '')).toThrow();
+      });
+    });
+  });
+});
