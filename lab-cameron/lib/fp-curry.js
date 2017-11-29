@@ -8,6 +8,7 @@ fp.map =
       if (typeof callback !== 'function') {
         throw new TypeError('<callback> should be a function');
       }
+      
       if (!Array.isArray(collection)) {
         throw new TypeError('<collection> should be an array');
       }
