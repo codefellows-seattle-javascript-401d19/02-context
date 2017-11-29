@@ -13,3 +13,7 @@ fp.map = (callback, collection) => {
 fp.filter = (callback, collection) => {
   return Array.prototype.filter.call(collection, callback);
 }
+
+fp.slice = (start, stop, collection) => {
+  return Array.prototype.slice.call(collection, start, stop);
+}
