@@ -249,4 +249,87 @@ describe('fp.js tests', () => {
       }).toThrow();
     });
   });
+
+  describe('When called correctly, fp.reduce should take in a callback function, an initial state, and an array / array - like object, and return some type of object.', () => {
+    test('When given a valid callback function, an initial state, and an array, an object should be returned.', () => {
+      expect(
+        fp.reduce(
+          (accumulator, currentValue) => accumulator + currentValue,
+          0,
+          [1, 2, 3, 4, 5]
+        )
+      ).toBe(15);
+
+      // expect(
+      //   fp.filter(
+      //     word => /schmoo/.test(word),
+      //     ['shmee', 'schmaack', 'schmoo', 'schmoopoppy', 'shmapps']
+      //   )
+      // ).toEqual(['schmoo', 'schmoopoppy']);
+    });
+
+    // test('When given a valid callback and a string, a filtered array should be returned.', () => {
+    //   expect(
+    //     fp.filter(
+    //       char => char === 'p',
+    //       'schmeeple-schmapple-peups'
+    //     )
+    //   ).toEqual(['p', 'p', 'p', 'p', 'p']);
+
+    //   expect(
+    //     fp.filter(
+    //       char => char > 2 && char < 5,
+    //       '1234567890'
+    //     )
+    //   ).toEqual(['3', '4']);
+    // });
+
+    // test('When given a valid callback and an array-like object, such as arguments or args, a filtered array should be returned.', () => {
+    //   expect(
+    //     (function() {
+    //       return fp.filter(
+    //         arr => typeof arr[0] === 'object',
+    //         arguments
+    //       );
+    //     })([[[]]], [9, {arr: [{}, []]}], [['boo'], 'hi'])
+    //   ).toEqual([[[[]]], [['boo'], 'hi']]);
+
+    //   expect(
+    //     ((...args) => {
+    //       return fp.filter(
+    //         arr => arr,
+    //         args
+    //       );
+    //     })('', 0, 1, '1', null, undefined, true, false)
+    //   ).toEqual([1, '1', true]);
+    // });
+
+    // test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+    //   expect(() => {
+    //     fp.filter(
+    //       ele => ele,
+    //       456
+    //     );
+    //   }).toThrow();
+
+    //   expect(() => {
+    //     fp.filter(
+    //       ele => ele,
+    //       null
+    //     );
+    //   }).toThrow();
+    // });
+
+    // test('If there are less than two arguments, an exception should be thrown.', () => {
+    //   expect(() => {
+    //     fp.filter(
+    //       ele => ele
+    //     );
+    //   }).toThrow();
+
+    //   expect(() => {
+    //     fp.filter();
+    //   }).toThrow();
+    // });
+  });
 });
