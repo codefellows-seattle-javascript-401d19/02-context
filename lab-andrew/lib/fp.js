@@ -31,3 +31,7 @@ fp.reduce = (callback, collection, initialValue) => {
   });
   return Array.prototype.reduce.call(collection, callback, initialValue);
 };
+
+fp.slice = (collection, begin, end) => {
+  return Array.prototype.slice.call(collection, begin, end);
+};

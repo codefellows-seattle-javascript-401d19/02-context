@@ -51,7 +51,6 @@ describe('fp.test.js', () => {
     });
   });
 
-
   describe('testing functionality for fp.filter', () => {
 
     test('does filter return expected values', () => {
@@ -153,5 +152,53 @@ describe('fp.test.js', () => {
 
   describe('testing functionality for fp.slice', () => {
 
+    test('does slice return expected values', () => {
+      expect(fp.slice(
+        [0, 1, 2, 3],
+        1,
+        3
+      )).toEqual([1, 2]);
+    });
+  });
+
+  describe('testing invalid input for fp.slice', () => {
+
+    test('is an error thrown with invalid values in collection', () => {
+      const newSli = () => {
+        fp.slice(
+          (a, c) => a + c,
+          [1, 'wawa', 3],
+          0
+        );
+      };
+      const noSliColl = () => {
+        fp.slice(
+          (a, c) => a + c,
+          [],
+          0
+        );
+      };
+      const noSliArr = () => {
+        fp.slice(
+          (a, c) => a + c,
+          'whatevs',
+          0
+        );
+      };
+      expect(newSli).toThrow();
+      expect(noSliColl).toThrow();
+      expect(noSliArr).toThrow();
+    });
+
+    test('is an error thrown with invalid callback', () => {
+      const badSli = () => {
+        fp.slice(
+          'nah',
+          [1, 2, 3],
+          0
+        );
+      };
+      expect(badSli).toThrow();
+    });
   });
 });
