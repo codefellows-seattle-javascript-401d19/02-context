@@ -85,6 +85,7 @@ describe('fp.test.js', () => {
         }).toThrow();
     });
   });
+
   describe('tests for fp.filter', () => {
 
     test('fp.filter should return an array with elemetns that passed the filter applied by the callback', () => {
@@ -92,6 +93,62 @@ describe('fp.test.js', () => {
         (x => x < 3),
         [1,2,3]
       )).toEqual([1,2]);
+    });
+
+    test('An exception should be thrown if collection is not an array', () => {
+      expect(
+        () => {
+          fp.filter(
+            x => x < 3,
+            'string, not array');
+        }).toThrow();
+    });
+
+    test('An exception should be thrown if callback is not a function', () => {
+      expect(
+        () => {
+          fp.filter(
+            'string',
+            [1,2,3]);
+        }).toThrow();
+    });
+  });
+
+  describe('tests for fp.slice', () => {
+
+    test('fp.slice should return an array with elements starting with begin argument and ending before end argument', () => {
+      expect(fp.slice(
+        1,
+        4,
+        [1,2,3,5,6,7,8]
+      )).toEqual([2,3,5]);
+    });
+
+    test('An exception should be thrown if collection is not an array', () => {
+      expect(
+        () => {
+          fp.slice(
+            1,
+            4,
+            'collection not an array');
+        }).toThrow();
+    });
+
+    test('An exception should be thrown if begin or end is not a number', () => {
+      expect(
+        () => {
+          fp.slice(
+            'string',
+            4,
+            [1,2,3,5,6,7,8]);
+        }).toThrow();
+      expect(
+        () => {
+          fp.slice(
+            1,
+            true,
+            [1,2,3,5,6,7,8]);
+        }).toThrow();
     });
   });
 });
