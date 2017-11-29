@@ -17,14 +17,17 @@ fp.correctType = (arg, expected, test) => {
 
 fp.map = (callback, collection) => {
   fp.enoughArgs(callback, collection);
-  if(collection.length === undefined) 
-    throw new TypeError('<collection> must be an iterable object.');
+  fp.correctType(callback, 'A function', isFunction);
+  fp.correctType(collection, 'An iterable object', isIterable);
   return [].map.call(collection, callback);
 };
 
 fp.filter = (callback, collection) => {
   fp.enoughArgs(callback, collection);
-  if (collection.length === undefined)
-    throw new TypeError('<collection> must be an iterable object.');
+  fp.correctType(callback, 'A function', isFunction);
+  fp.correctType(collection, 'An iterable object', isIterable);
   return [].filter.call(collection, callback);
 };
+
+let isIterable = object => object.length !== undefined;
+let isFunction = object => typeof object === 'function';
