@@ -142,11 +142,11 @@ describe('fp.js', () => {
     });
     test('return value should be the middle 3 values', ()=>{
       expect(fp.slice(
-        [1, 2, 3, 4, 5],
+        [1, 2, 'three', 4, 5],
         1,
-        3
+        4
       ).toString()
-      ).toBe('2,3,4');
+      ).toBe('2,three,4');
     });
     test('an exception should be thrown if error', ()=>{
       expect(
@@ -155,6 +155,22 @@ describe('fp.js', () => {
             [1, 2, 3, 4, 5],
             5,
             1
+          );
+        }).toThrow();
+      expect(
+        () => {
+          fp.slice(
+            [1, 2, 3, 4, 5],
+            'start',
+            1
+          );
+        }).toThrow();
+      expect(
+        () => {
+          fp.slice(
+            [1, 2, 3, 4, 5],
+            1,
+            'five'
           );
         }).toThrow();
       expect(
