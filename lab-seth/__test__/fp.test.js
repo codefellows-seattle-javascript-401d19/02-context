@@ -20,15 +20,6 @@ describe('fp.test.js', () => {
             'string, not array');
         }).toThrow();
     });
-
-    test('An exception should be thrown if collection is null', () => {
-      expect(
-        () => {
-          fp.map(
-            null,
-            [1,2,3]);
-        }).toThrow();
-    });
   });
 
 
@@ -69,18 +60,6 @@ describe('fp.test.js', () => {
               return accumulator + currentValue;
             },
             'string, not array',
-            0);
-        }).toThrow();
-    });
-
-    test('An exception should be thrown if collection is null', () => {
-      expect(
-        () => {
-          fp.reduce(
-            (accumulator, currentValue) => {
-              return accumulator + currentValue;
-            },
-            null,
             0);
         }).toThrow();
     });

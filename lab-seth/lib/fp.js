@@ -7,9 +7,6 @@ fp.map = (callback, collection) => {
   if(!Array.isArray(collection))
     throw new TypeError('<collection> should be an array');
 
-  if(collection === null)
-    throw new TypeError('<collection> should NOT be null');
-
   return Array.prototype.map.call(collection, callback);
 };
 
@@ -20,9 +17,6 @@ fp.reduce = (callback, collection, initialValue) => {
 
   if(!Array.isArray(collection))
     throw new TypeError('<collection> should be an array');
-
-  if(collection === null)
-    throw new TypeError('<collection> should NOT be null');
 
   return Array.prototype.reduce.call(collection, callback, initialValue);
 };
