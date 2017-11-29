@@ -24,9 +24,8 @@ fp.filter = (callback, collection) => {
 };
 
 fp.slice = (begin, end, collection) => {
-  console.log(collection);
   if (typeof collection !== 'object')
-    throw new TypeError('<object> Not A Function');
+    throw new TypeError('<collection> Not An Object');
 
   return Array.prototype.slice.call(collection, begin, end);
 };

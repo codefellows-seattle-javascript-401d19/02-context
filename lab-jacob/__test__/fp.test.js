@@ -62,8 +62,7 @@ test('In Filter Exception Thrown If Callback Is Not A Function', () => {
 
 describe('fp.slice', () => {
   test('Should return a new collection with elements at ', () => {
-    expect(fp.slice(1,3[1,2,3,4,5] 
-    )).toEqual([2,3]);
+    expect(fp.slice(1,3,[1,2,3,4,5])).toEqual([2,3]);
   });
 });
 
