@@ -53,6 +53,7 @@ build/Release
 # Dependency directories
 node_modules/
 jspm_packages/
+coverage/
 
 # Typescript v1 declaration files
 typings/
@@ -146,3 +147,6 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/osx,vim,node,linux,windows,visualstudiocode
+
+node_modules/*
+coverage/*
