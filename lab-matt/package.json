@@ -1,0 +1,17 @@
+{
+  "name": "lab-matt",
+  "version": "1.0.0",
+  "description": "02 lab from code fellows javascript 401d19",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "author": "Matthew LeBlanc",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}

@@ -11,7 +11,7 @@
 ## Configuration 
 Configure the root of your repository with the following files and directories. Thoughtfully name and organize any additional configuration or module files.
 * **README.md** - contains documentation
-* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file 
+* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file
 * **.eslintrc.json** - contains the course linter configuration
 * **.eslintignore** - contains the course linter ignore configuration
 * **package.json** - contains npm package config
@@ -22,7 +22,7 @@ Configure the root of your repository with the following files and directories. 
 
 ## Feature Tasks
 #### fp Module
-Create a NodeJS module in the lib/ directory named fp.js that exports an object. Create stand-alone `map`, `filter`, `reduce`, and `slice` functions using the `call` and `apply` function methods. Define each function using ES6 lexical arrow function syntax. 
+Create a NodeJS module in the lib/ directory named fp.js that exports an object. Create stand-alone `map`, `filter`, `reduce`, and `slice` functions using the `call` and `apply` function methods. Define each function using ES6 lexical arrow function syntax.
 
 In each function error-check each parameter and throw an Error with a meaningful message if the function is invoked with invalid arguments. Do not use any third party libraries in the FP module.
 
@@ -34,7 +34,7 @@ In each function error-check each parameter and throw an Error with a meaningful
 #### FP Module Tests
 Create a NodeJS module in the \_\_test\_\_/ named fp.test.js that asserts the correctness of the fp module.  
 
-* Use TDD `describe` and `test` methods to define descriptive tests 
+* Use TDD `describe` and `test` methods to define descriptive tests
 * Each `test` callback should aim to test a small well defined feature of a function
 * Write tests to ensure the fp module functions correctly error-check parameters
   * Assert that the correct errors are thrown with invalid arguments
