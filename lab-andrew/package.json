@@ -1,0 +1,26 @@
+{
+  "name": "lab-andrew",
+  "version": "1.0.0",
+  "description": "401-lab-02",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest -i --coverage",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALB37/02-context.git"
+  },
+  "keywords": [
+    "context"
+  ],
+  "author": "Andrew Bloom",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ALB37/02-context/issues"
+  },
+  "homepage": "https://github.com/ALB37/02-context#readme"
+}
