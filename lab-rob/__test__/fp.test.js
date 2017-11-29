@@ -478,17 +478,16 @@ describe('fp.js tests', () => {
       }).toThrow();
     });
 
-    // test('If there are less than three arguments, an exception should be thrown.', () => {
-    //   expect(() => {
-    //     fp.slice(
-    //       ele => ele,
-    //       ''
-    //     );
-    //   }).toThrow();
+    test('If there are less than three arguments, an exception should be thrown.', () => {
+      expect(() => {
+        fp.slice(
+          'goodnight'
+        );
+      }).toThrow();
 
-    //   expect(() => {
-    //     fp.slice();
-    //   }).toThrow();
-    // });
+      expect(() => {
+        fp.slice();
+      }).toThrow();
+    });
   });
 });

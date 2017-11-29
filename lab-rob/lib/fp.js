@@ -44,6 +44,7 @@ fp.reduce = (callback, initialState, collection) => {
 };
 
 fp.slice = (begin, end, collection) => {
+  fp.enoughArgs('fp.slice()', begin, end, collection);
   fp.correctType(begin, 'A number', isNumber);
   fp.correctType(end, 'A number', isNumber);
   fp.correctType(collection, 'An iterable object', isIterable);
