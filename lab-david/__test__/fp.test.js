@@ -59,3 +59,23 @@ describe('fp.filter', () => {
     ).toThrow();
   });
 });
+
+describe('fp.slice', () => {
+  test('returns a portion of the old array into a new array according to position specified', () => {
+    expect(fp.slice(
+      (x) => {
+        return [x];
+      },
+      [0,2,2],
+      2
+    )).toEqual([2]);
+  });
+
+  test('an exception should be thrown if the callback is not a function', () => {
+    expect(
+      () => {
+        fp.slice(`I'm totally a function ()`, [3,3,3], 0);
+      }
+    ).toThrow();
+  });
+});
