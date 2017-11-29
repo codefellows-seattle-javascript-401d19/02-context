@@ -32,19 +32,59 @@ describe('fp.js', () => {
   // ---------------------------------------------
   describe('fp.filter - (returns previous array with only the words that are longer than 5 letters)', () => {
     const words = ['foobar', 'truthy', 'falsy', 'true', 'one'];
+    const words2 = ['random', 'large', 'orange', 'banana', 'vehicle'];
+    const numbers = [34, 23, 1235432, 268234, 372];
+    const numbers2 = [50, 40, 30, 60];
     const filterWordsOverFive = function(currentElement) {
       return currentElement.length > 5;
     };
+    const filterNumbersOverFifty = function(currentElement) {
+      return currentElement > 50;
+    };
 
-    test(`words over five characters - ['foobar', 'truthy', 'falsy', 'true', 'one'] => ['foobar', 'truthy']`, () => {
+    test(`words over length of five - ['foobar', 'truthy', 'falsy', 'true', 'one'] => ['foobar', 'truthy']`, () => {
       expect(fp.filter(filterWordsOverFive, words)).toEqual(['foobar', 'truthy']);
+    });
+
+    test(`words over length of five  - ['random', 'large', 'orange', 'banana', 'vehicle'] => ['random', 'orange', 'banana', 'vehicle']`, () => {
+      expect(fp.filter(filterWordsOverFive, words2)).toEqual(['random', 'orange', 'banana', 'vehicle']);
+    });
+
+    test('numbers over fifty - [34, 23, 1235432, 268234, 372] => [1235432, 268234, 372]', () => {
+      expect(fp.filter(filterNumbersOverFifty, numbers)).toEqual([1235432, 268234, 372]);
+    });
+
+    test('numbers over fifty - [50, 40, 30, 60] => [60]', () => {
+      expect(fp.filter(filterNumbersOverFifty, numbers2)).toEqual([60]);
     });
   });
 
   // ---------------------------------------------
   //  fp.reduce
   // ---------------------------------------------
+  describe('fp.reduce', () => {
+    const numbers = [3, 6, 10];
+    const strings = ['hello', 'there', 'friend'];
+    const reduceNumbers = (accumulator, currentElement) => {
+      return accumulator + currentElement;
+    };
+    const concatStrings = (accumulator, currentElement) => {
+      if (accumulator === '') return currentElement;
+      return `${accumulator} ${currentElement}`;
+    };
 
+    test('reduce [3, 6, 10] to 19', () => {
+      expect(fp.reduce(reduceNumbers, numbers, 0)).toEqual(19);
+    });
+
+    test(`reduce ['hello', 'there', 'friend'] => 'hello there friend'`, () => {
+      expect(fp.reduce(concatStrings, strings, '')).toBe('hello there friend');
+    });
+
+    test('reduce empty string => returns empty string', () => {
+      expect(fp.reduce(concatStrings, [''], '')).toBe('');
+    });
+  });
 
   // ---------------------------------------------
   //  fp.slice

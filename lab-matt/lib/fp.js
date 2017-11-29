@@ -10,11 +10,11 @@ fp.filter = (callback, collection) => {
   return Array.prototype.filter.call(collection, callback);
 };
 
-fp.reduce = (callback, collection) => {
-  return Array.prototype.reduce.call(collection, callback);
+fp.reduce = (callback, collection, initialState) => {
+  return Array.prototype.reduce.call(collection, callback, initialState);
 
 };
 
-fp.slice = (callback, collection) => {
-  // return Array.prototype.slice.call(collection, callback);
+fp.slice = (begin, end, collection) => {
+  return Array.prototype.slice.call(begin, end, collection);
 };
