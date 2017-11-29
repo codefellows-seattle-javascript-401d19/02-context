@@ -139,10 +139,10 @@ describe('fp.js tests', () => {
       )).toEqual([3, 6, 9]);
     });
 
-    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+    test('If the first argument is not a function, or the second argument is not iterable, an exception should be thrown.', () => {
       expect(() => {
         fp.map(
-          ele => ele,
+          'ele => ele',
           456
         );
       }).toThrow();
@@ -221,10 +221,10 @@ describe('fp.js tests', () => {
       ).toEqual([1, '1', true]);
     });
 
-    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+    test('If the first argument is not a function, or the second argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.filter(
-          ele => ele,
+          'ele => ele',
           456
         );
       }).toThrow();
@@ -309,21 +309,21 @@ describe('fp.js tests', () => {
       ).toBe('I am super tired!');
     });
 
-    // test('If the second argument is not an iterable object, an exception should be thrown.', () => {
-    //   expect(() => {
-    //     fp.reduce(
-    //       ele => ele,
-    //       456
-    //     );
-    //   }).toThrow();
+    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+      expect(() => {
+        fp.reduce(
+          ele => ele,
+          456
+        );
+      }).toThrow();
 
-    //   expect(() => {
-    //     fp.reduce(
-    //       ele => ele,
-    //       null
-    //     );
-    //   }).toThrow();
-    // });
+      expect(() => {
+        fp.reduce(
+          ele => ele,
+          null
+        );
+      }).toThrow();
+    });
 
     // test('If there are less than two arguments, an exception should be thrown.', () => {
     //   expect(() => {
