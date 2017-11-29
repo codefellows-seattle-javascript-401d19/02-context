@@ -16,16 +16,24 @@ describe('fp.js tests', () => {
       )).toEqual(['hihi', 'therethere']);
     });
 
-    test('When called with a non-array, but iterable object, the object should be returned as acted upon.', () => {
+    test('When called with a non-array, but iterable object, like a string, the object should be returned as an array with its elements acted upon.', () => {
       expect(fp.map(
         char => char + char,
         'hey'
       )).toEqual(['hh', 'ee', 'yy']);
+
+      expect(fp.map(
+        num => Number(num) * 3,
+        '123'
+      )).toEqual([3, 6, 9]);
     });
 
-    test('If the first argument is not an function, an exception should be thrown.', () => {
+    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
-        fp.map('not a function', [1, 2, 3]);
+        fp.map(
+          ele => ele,
+          456
+        );
       }).toThrow();
     });
   });
