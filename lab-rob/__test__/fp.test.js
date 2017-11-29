@@ -287,25 +287,27 @@ describe('fp.js tests', () => {
       ).toBe('-2-10123456-3');
     });
 
-    // test('When given a valid callback and an array-like object, such as arguments or args, a reduceed array should be returned.', () => {
-    //   expect(
-    //     (function() {
-    //       return fp.reduce(
-    //         arr => typeof arr[0] === 'object',
-    //         arguments
-    //       );
-    //     })([[[]]], [9, {arr: [{}, []]}], [['boo'], 'hi'])
-    //   ).toEqual([[[[]]], [['boo'], 'hi']]);
+    test('When given a valid callback function, an initial state, and an array-like object, such as arguments or args, a reduced object should be returned.', () => {
+      expect(
+        (function() {
+          return fp.reduce(
+            (accumulator, currentValue) => accumulator + currentValue,
+            0,
+            arguments
+          );
+        })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+      ).toBe(55);
 
-    //   expect(
-    //     ((...args) => {
-    //       return fp.reduce(
-    //         arr => arr,
-    //         args
-    //       );
-    //     })('', 0, 1, '1', null, undefined, true, false)
-    //   ).toEqual([1, '1', true]);
-    // });
+      expect(
+        ((...args) => {
+          return fp.reduce(
+            (accumulator, currentValue) => accumulator + currentValue,
+            '',
+            args
+          );
+        })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
+      ).toBe('I am super tired!');
+    });
 
     // test('If the second argument is not an iterable object, an exception should be thrown.', () => {
     //   expect(() => {
