@@ -3,7 +3,6 @@
 const fp = module.exports = {};
 
 fp.map = (callback, collection) => {
-  if (typeof callback !== 'function') throw new TypeError('callback must be function');
   if (typeof collection !== 'object') throw new TypeError('collection must be an array');
   if (collection.length < 1) throw new TypeError('collection must contain values');
   collection.forEach(e => {
@@ -13,7 +12,6 @@ fp.map = (callback, collection) => {
 };
 
 fp.filter = (callback, collection) => {
-  if (typeof callback !== 'function') throw new TypeError('callback must be function');
   if (typeof collection !== 'object') throw new TypeError('collection must be an array');
   if (collection.length < 1) throw new TypeError('collection must contain values');
   collection.forEach(e => {
@@ -23,7 +21,6 @@ fp.filter = (callback, collection) => {
 };
 
 fp.reduce = (callback, collection, initialValue) => {
-  if (typeof callback !== 'function') throw new TypeError('callback must be function');
   if (typeof collection !== 'object') throw new TypeError('collection must be an array');
   if (collection.length < 1) throw new TypeError('collection must contain values');
   collection.forEach(e => {
@@ -33,5 +30,14 @@ fp.reduce = (callback, collection, initialValue) => {
 };
 
 fp.slice = (collection, begin, end) => {
+  if (typeof collection !== 'object') throw new TypeError('collection must be an array');
+  if (begin){
+    begin = parseInt(begin);
+    if (isNaN(begin)) throw new TypeError('begin argument must be an integer');
+  }
+  if (end){
+    end = parseInt(end);
+    if (isNaN(end)) throw new TypeError('end argument must be an integer');
+  }
   return Array.prototype.slice.call(collection, begin, end);
 };

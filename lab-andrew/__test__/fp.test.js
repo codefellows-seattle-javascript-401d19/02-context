@@ -158,44 +158,39 @@ describe('fp.test.js', () => {
         1,
         3
       )).toEqual([1, 2]);
+      expect(fp.slice(
+        ['apple', 'banana', 'orange', 'plum'],
+        undefined,
+        undefined
+      )).toEqual(['apple', 'banana', 'orange', 'plum']);
     });
   });
 
   describe('testing invalid input for fp.slice', () => {
 
-    test('is an error thrown with invalid values in collection', () => {
+    test('if a start or end value is supplied, it must be an integer', () => {
       const newSli = () => {
         fp.slice(
-          (a, c) => a + c,
-          [1, 'wawa', 3],
-          0
+          [1, 2, 3],
+          'boop'
         );
       };
-      const noSliColl = () => {
+      const newSli2 = () => {
         fp.slice(
-          (a, c) => a + c,
-          [],
-          0
+          [1, 2, 3],
+          2,
+          ['boop', 'lololololol']
         );
       };
-      const noSliArr = () => {
-        fp.slice(
-          (a, c) => a + c,
-          'whatevs',
-          0
-        );
-      };
+
       expect(newSli).toThrow();
-      expect(noSliColl).toThrow();
-      expect(noSliArr).toThrow();
+      expect(newSli2).toThrow();
     });
 
-    test('is an error thrown with invalid callback', () => {
+    test('is an error thrown with an invalid collection', () => {
       const badSli = () => {
         fp.slice(
-          'nah',
-          [1, 2, 3],
-          0
+          'foofoo'
         );
       };
       expect(badSli).toThrow();
