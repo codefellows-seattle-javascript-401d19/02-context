@@ -89,4 +89,15 @@ describe('fp.js', () => {
   // ---------------------------------------------
   //  fp.slice
   // ---------------------------------------------
+  describe('fp.slice', () => {
+    const array1 = [3, 'two', null, 2, undefined];
+
+    test(`[3, 'two', null, 2, undefined] should return ['two', null, 2]`, () => {
+      expect(fp.slice(1, 4, array1)).toEqual(['two', null, 2]);
+    });
+
+    test(`begin: 4, end: 4, [4, 2] should return an empty array`, () => {
+      expect(fp.slice(4, 4, [4, 2])).toEqual([]);
+    });
+  });
 });

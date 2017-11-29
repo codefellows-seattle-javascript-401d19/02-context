@@ -12,9 +12,8 @@ fp.filter = (callback, collection) => {
 
 fp.reduce = (callback, collection, initialState) => {
   return Array.prototype.reduce.call(collection, callback, initialState);
-
 };
 
 fp.slice = (begin, end, collection) => {
-  return Array.prototype.slice.call(begin, end, collection);
+  return Array.prototype.slice.call(collection, begin, end);
 };
