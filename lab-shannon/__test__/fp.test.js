@@ -9,11 +9,12 @@ describe(`fp.test.js`, () => {
       expect(fp.map(x => x + 1, [])).toEqual([]);
       expect(fp.map(x => x * 2, [1,2,3])).toEqual([2,4,6]);
     });
-    test.only(`fp.map should throw a Type Error if the callback provided is not a function`, () => {
+    test(`fp.map should throw a Type Error if the callback provided is not a function`, () => {
       expect(() => {
         fp.map('I am not a function',[1,2,3])
       }).toThrow();
     });
+    //check the type of the arguments provided
   })
   describe(`fp.filter`, () => {
     test(`fp.filter should return a new array with only the elements which fit the specifications provided`, () => {
@@ -25,17 +26,14 @@ describe(`fp.test.js`, () => {
         fp.filter(`I'm not a function`), [1,2,3]
       }).toThrow();
     })
+    //check the type of the arguments provided
   })
 
   describe(`fp.slice`, () => {
     test(`fp.slice should return a portion of the input from the specified start point to end point (not inclusive`, () => {
       expect(fp.slice(0, 4, ['coding', 'is', 'the', 'best', 'ever'])).toEqual(['coding', 'is', 'the', 'best']);
     })
-    test(`fp.slice should throw a Type Error if the callback provided is not a function`, () => {
-      expect(() => {
-        fp.slice(`I am not a function!`, [1,2,3])
-      }).toThrow();
-    })
+    //check the type of the arguments provided
   })
 
   describe(`fp.reduce`, () => {
@@ -47,5 +45,6 @@ describe(`fp.test.js`, () => {
         fp.reduce(`I am not a function!`, [1,2,3])
       }).toThrow();
     })
+    //check the type of the arguments provided
   })
 });
