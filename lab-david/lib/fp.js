@@ -17,6 +17,6 @@ fp.map = (callback, collection) => {
 fp.filter = (callback, collection) => {
   if(typeof callback !== 'function')
     throw new TypeError('<callback> should be a function!');
-  return Array.prototype.filter.call(collection, callback);
+  return Array.prototype.filter.(collection, callback);
 };
-  
+
