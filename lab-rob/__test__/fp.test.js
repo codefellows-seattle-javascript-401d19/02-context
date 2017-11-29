@@ -127,6 +127,18 @@ describe('fp.js tests', () => {
       ).toEqual(['I', 'USE', 'SPREAD!']);
     });
 
+    // test('When called with an empty collection, fp.map() should return an empty array', () => {
+    //   expect(fp.map(
+    //     num => num * 2,
+    //     [1, 2, 3]
+    //   )).toEqual([2, 4, 6]);
+
+    //   expect(fp.map(
+    //     word => word + word,
+    //     ['hi', 'there']
+    //   )).toEqual(['hihi', 'therethere']);
+    // });
+
     test('When called with a non-array, but iterable object, like a string, the object should be returned as an array with its elements acted upon.', () => {
       expect(fp.map(
         char => char + char,
