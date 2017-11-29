@@ -127,17 +127,17 @@ describe('fp.js tests', () => {
       ).toEqual(['I', 'USE', 'SPREAD!']);
     });
 
-    // test('When called with an empty collection, fp.map() should return an empty array', () => {
-    //   expect(fp.map(
-    //     num => num * 2,
-    //     [1, 2, 3]
-    //   )).toEqual([2, 4, 6]);
+    test('When called with an empty collection, fp.map() should return an empty array', () => {
+      expect(fp.map(
+        num => num * 2,
+        []
+      )).toEqual([]);
 
-    //   expect(fp.map(
-    //     word => word + word,
-    //     ['hi', 'there']
-    //   )).toEqual(['hihi', 'therethere']);
-    // });
+      expect(fp.map(
+        word => word + word,
+        ''
+      )).toEqual([]);
+    });
 
     test('When called with a non-array, but iterable object, like a string, the object should be returned as an array with its elements acted upon.', () => {
       expect(fp.map(
@@ -233,6 +233,18 @@ describe('fp.js tests', () => {
       ).toEqual([1, '1', true]);
     });
 
+    test('When called with an empty collection, fp.filter() should return an empty array', () => {
+      expect(fp.filter(
+        num => num * 2,
+        []
+      )).toEqual([]);
+
+      expect(fp.filter(
+        word => word + word,
+        ''
+      )).toEqual([]);
+    });
+
     test('If the first argument is not a function, or the second argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.filter(
@@ -321,6 +333,20 @@ describe('fp.js tests', () => {
       ).toBe('I am super tired!');
     });
 
+    test('When called with an empty collection, fp.reduce() should return the initialState argument', () => {
+      expect(fp.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        '',
+        []
+      )).toBe('');
+
+      expect(fp.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        9,
+        ''
+      )).toBe(9); 
+    });
+
     test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
       expect(() => {
         fp.reduce(
@@ -352,4 +378,109 @@ describe('fp.js tests', () => {
       }).toThrow();
     });
   });
+
+  // describe('When called correctly, fp.reduce should take in a callback function, an initial state, and an array / array - like object, and return some type of object.', () => {
+  //   test('When given a valid callback function, an initial state, and an array, an object should be returned.', () => {
+  //     expect(
+  //       fp.reduce(
+  //         (accumulator, currentValue) => accumulator + currentValue,
+  //         0,
+  //         [1, 2, 3, 4, 5]
+  //       )
+  //     ).toBe(15);
+
+  //     expect(
+  //       fp.reduce(
+  //         (accumulator, currentValue) => accumulator.concat(currentValue),
+  //         [],
+  //         [[1, 2], [3, 4, 5]]
+  //       )
+  //     ).toEqual([1, 2, 3, 4, 5]);
+  //   });
+
+  //   test('When given a valid callback function, an initial state, and a string, a reduced object should be returned.', () => {
+  //     expect(
+  //       fp.reduce(
+  //         (accumulator, currentValue) => currentValue === 'x' ? accumulator + '!!!' : accumulator + currentValue,
+  //         '',
+  //         'fjwejxwjex'
+  //       )
+  //     ).toBe('fjwej!!!wje!!!');
+
+  //     expect(
+  //       fp.reduce(
+  //         (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
+  //         '',
+  //         '1234567890'
+  //       )
+  //     ).toBe('-2-10123456-3');
+  //   });
+
+  //   test('When given a valid callback function, an initial state, and an array-like object, such as arguments or args, a reduced object should be returned.', () => {
+  //     expect(
+  //       (function() {
+  //         return fp.reduce(
+  //           (accumulator, currentValue) => accumulator + currentValue,
+  //           0,
+  //           arguments
+  //         );
+  //       })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+  //     ).toBe(55);
+
+  //     expect(
+  //       ((...args) => {
+  //         return fp.reduce(
+  //           (accumulator, currentValue) => accumulator + currentValue,
+  //           '',
+  //           args
+  //         );
+  //       })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
+  //     ).toBe('I am super tired!');
+  //   });
+
+  //   test('When called with an empty collection, fp.reduce() should return the initialState argument', () => {
+  //     expect(fp.reduce(
+  //       (accumulator, currentValue) => accumulator + currentValue,
+  //       '',
+  //       []
+  //     )).toBe('');
+
+  //     expect(fp.reduce(
+  //       (accumulator, currentValue) => accumulator + currentValue,
+  //       9,
+  //       ''
+  //     )).toBe(9); 
+  //   });
+
+  //   test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
+  //     expect(() => {
+  //       fp.reduce(
+  //         '(accumulator, currentValue) => accumulator + (Number(currentValue) - 3)',
+  //         '',
+  //         '1234567890'
+  //       );
+  //     }).toThrow();
+
+  //     expect(() => {
+  //       fp.reduce(
+  //         (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
+  //         '',
+  //         1234567890
+  //       );
+  //     }).toThrow();
+  //   });
+
+  //   test('If there are less than three arguments, an exception should be thrown.', () => {
+  //     expect(() => {
+  //       fp.reduce(
+  //         ele => ele,
+  //         ''
+  //       );
+  //     }).toThrow();
+
+  //     expect(() => {
+  //       fp.reduce();
+  //     }).toThrow();
+  //   });
+  // });
 });
