@@ -32,7 +32,16 @@ describe('fp.test.js', () => {
         () => {
           fp.map(
             (x => x * 2),
-            'strong, not array');
+            'string, not array');
+        }).toThrow();
+    });
+
+    test('An exception should be thrown if collection is null', () => {
+      expect(
+        () => {
+          fp.map(
+            null,
+            [1,2,3]);
         }).toThrow();
     });
   });
