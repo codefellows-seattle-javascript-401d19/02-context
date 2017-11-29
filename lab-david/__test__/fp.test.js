@@ -1,10 +1,10 @@
 'use strict';
 
-const customFunctions = require('../lib/fp.js');
+const fp = require('../lib/fp.js');
 
-describe('customFunctions.reduce', () => {
+describe('fp.reduce', () => {
   test('applies a function against an accumulator and each element in the array to reduce it to a single value', () => {
-    expect(customFunctions.reduce(
+    expect(fp.reduce(
       (accumulator, currentValue) => {
         return accumulator + currentValue;
       },
@@ -16,7 +16,26 @@ describe('customFunctions.reduce', () => {
   test('An exception should be thrown if the callback is not a function', () => {
     expect(
       () => {
-        customFunctions.reduce(`I'm totally a function ()`, [3,3,3], 0);
+        fp.reduce(`I'm totally a function ()`, [3,3,3], 0);
+      }
+    ).toThrow();
+  });
+});
+
+describe('fp.map', () => {
+  test('applies a function against each element in the array and creates a new array', () => {
+    expect(fp.map(
+      (x) => {
+        return x + 1;
+      },
+      [3,3,3]
+    )).toEqual([4,4,4]);
+  });
+      
+  test('An exception should be thrown if the callback is not a function', () => {
+    expect(
+      () => {
+        fp.map(`I'm totally a function ()`, [3,3,3], 0);
       }
     ).toThrow();
   });
