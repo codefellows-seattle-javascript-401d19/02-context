@@ -85,6 +85,13 @@ describe('fp.js tests', () => {
           [1, 2, 3, 4, 5]
         )
       ).toEqual([4, 5]);
+
+      expect(
+        fp.filter(
+          word => /schmoo/.test(word),
+          ['shmee', 'schmaack', 'schmoo', 'schmoopoppy', 'shmapps']
+        )
+      ).toEqual(['schmoo', 'schmoopoppy']);
     });
   });
 });

@@ -11,5 +11,5 @@ fp.map = (callback, collection) => {
 };
 
 fp.filter = (callback, collection) => {
-  return [4, 5];
+  return [].filter.call(collection, callback);
 };
