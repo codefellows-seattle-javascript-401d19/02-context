@@ -45,7 +45,7 @@ describe('fp.filter', () => {
   test('creates a new array with all elements that pass the test by the function', () => {
     expect(fp.filter(
       (x) => {
-        return x < 0;
+        return x > 0;
       },
       [0, 1, 2]
     )).toEqual([1, 2]);

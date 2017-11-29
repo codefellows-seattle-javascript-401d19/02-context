@@ -22,6 +22,6 @@ fp.filter = (callback, collection) => {
 
 fp.slice = (begin, end, collection) => {
   if(typeof callback !== 'function')
-    throw new TypeError('<callback> should be a function foo');
-  return Array.prototype.slice.call(begin, end, collection);
+    throw new TypeError('<callback> should be a function!');
+  return Array.prototype.slice.apply(this, [begin, end, collection]);
 };
