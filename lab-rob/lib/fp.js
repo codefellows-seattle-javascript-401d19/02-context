@@ -43,6 +43,16 @@ fp.reduce = (callback, initialState, collection) => {
   return [].reduce.call(collection, callback, initialState);
 };
 
+fp.slice = (begin, end, collection) => {
+  return [].slice.call(collection, begin, end);
+};
+
 let isIterable = object => object.length !== undefined;
 let isFunction = object => typeof object === 'function';
 let isString = object => typeof object === 'string';
+
+console.log(fp.slice(
+  4,
+  5,
+  'hey there boss'
+));

@@ -379,108 +379,108 @@ describe('fp.js tests', () => {
     });
   });
 
-  // describe('When called correctly, fp.reduce should take in a callback function, an initial state, and an array / array - like object, and return some type of object.', () => {
-  //   test('When given a valid callback function, an initial state, and an array, an object should be returned.', () => {
-  //     expect(
-  //       fp.reduce(
-  //         (accumulator, currentValue) => accumulator + currentValue,
-  //         0,
-  //         [1, 2, 3, 4, 5]
-  //       )
-  //     ).toBe(15);
+  describe('When called correctly, fp.slice should take in a beginning value, an ending value, and an array / array - like object, and return an array with the requested values.', () => {
+    test('When given a valid starting value, ending value, and array, an array should be returned.', () => {
+      expect(
+        fp.slice(
+          0,
+          3,
+          [1, 2, 3, 4, 5]
+        )
+      ).toEqual([1, 2, 3]);
 
-  //     expect(
-  //       fp.reduce(
-  //         (accumulator, currentValue) => accumulator.concat(currentValue),
-  //         [],
-  //         [[1, 2], [3, 4, 5]]
-  //       )
-  //     ).toEqual([1, 2, 3, 4, 5]);
-  //   });
+      expect(
+        fp.slice(
+          2,
+          4,
+          [1, 2, 3, 4, 5]
+        )
+      ).toEqual([3, 4]);
+    });
 
-  //   test('When given a valid callback function, an initial state, and a string, a reduced object should be returned.', () => {
-  //     expect(
-  //       fp.reduce(
-  //         (accumulator, currentValue) => currentValue === 'x' ? accumulator + '!!!' : accumulator + currentValue,
-  //         '',
-  //         'fjwejxwjex'
-  //       )
-  //     ).toBe('fjwej!!!wje!!!');
+    test('When given a valid starting value, ending value, and a string, an array should be returned.', () => {
+      expect(
+        fp.slice(
+          2,
+          4,
+          'hey there boss'
+        )
+      ).toEqual(['y', ' ']);
 
-  //     expect(
-  //       fp.reduce(
-  //         (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
-  //         '',
-  //         '1234567890'
-  //       )
-  //     ).toBe('-2-10123456-3');
-  //   });
+      expect(
+        fp.slice(
+          4,
+          5,
+          'hey there boss'
+        )
+      ).toEqual(['t']);
+    });
 
-  //   test('When given a valid callback function, an initial state, and an array-like object, such as arguments or args, a reduced object should be returned.', () => {
-  //     expect(
-  //       (function() {
-  //         return fp.reduce(
-  //           (accumulator, currentValue) => accumulator + currentValue,
-  //           0,
-  //           arguments
-  //         );
-  //       })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-  //     ).toBe(55);
+    // test('When given a valid callback function, an initial state, and an array-like object, such as arguments or args, a sliced object should be returned.', () => {
+    //   expect(
+    //     (function() {
+    //       return fp.slice(
+    //         (accumulator, currentValue) => accumulator + currentValue,
+    //         0,
+    //         arguments
+    //       );
+    //     })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+    //   ).toBe(55);
 
-  //     expect(
-  //       ((...args) => {
-  //         return fp.reduce(
-  //           (accumulator, currentValue) => accumulator + currentValue,
-  //           '',
-  //           args
-  //         );
-  //       })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
-  //     ).toBe('I am super tired!');
-  //   });
+    //   expect(
+    //     ((...args) => {
+    //       return fp.slice(
+    //         (accumulator, currentValue) => accumulator + currentValue,
+    //         '',
+    //         args
+    //       );
+    //     })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
+    //   ).toBe('I am super tired!');
+    // });
 
-  //   test('When called with an empty collection, fp.reduce() should return the initialState argument', () => {
-  //     expect(fp.reduce(
-  //       (accumulator, currentValue) => accumulator + currentValue,
-  //       '',
-  //       []
-  //     )).toBe('');
+    // test('When called with an empty collection, fp.slice() should return the initialState argument', () => {
+    //   expect(fp.slice(
+    //     (accumulator, currentValue) => accumulator + currentValue,
+    //     '',
+    //     []
+    //   )).toBe('');
 
-  //     expect(fp.reduce(
-  //       (accumulator, currentValue) => accumulator + currentValue,
-  //       9,
-  //       ''
-  //     )).toBe(9); 
-  //   });
+    //   expect(fp.slice(
+    //     (accumulator, currentValue) => accumulator + currentValue,
+    //     9,
+    //     ''
+    //   )).toBe(9); 
+    // });
 
-  //   test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
-  //     expect(() => {
-  //       fp.reduce(
-  //         '(accumulator, currentValue) => accumulator + (Number(currentValue) - 3)',
-  //         '',
-  //         '1234567890'
-  //       );
-  //     }).toThrow();
+    // test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
+    //   expect(() => {
+    //     fp.slice(
+    //       '(accumulator, currentValue) => accumulator + (Number(currentValue) - 3)',
+    //       '',
+    //       '1234567890'
+    //     );
+    //   }).toThrow();
 
-  //     expect(() => {
-  //       fp.reduce(
-  //         (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
-  //         '',
-  //         1234567890
-  //       );
-  //     }).toThrow();
-  //   });
+    //   expect(() => {
+    //     fp.slice(
+    //       (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
+    //       '',
+    //       1234567890
+    //     );
+    //   }).toThrow();
+    // });
 
-  //   test('If there are less than three arguments, an exception should be thrown.', () => {
-  //     expect(() => {
-  //       fp.reduce(
-  //         ele => ele,
-  //         ''
-  //       );
-  //     }).toThrow();
+    // test('If there are less than three arguments, an exception should be thrown.', () => {
+    //   expect(() => {
+    //     fp.slice(
+    //       ele => ele,
+    //       ''
+    //     );
+    //   }).toThrow();
 
-  //     expect(() => {
-  //       fp.reduce();
-  //     }).toThrow();
-  //   });
-  // });
+    //   expect(() => {
+    //     fp.slice();
+    //   }).toThrow();
+    // });
+  });
 });
