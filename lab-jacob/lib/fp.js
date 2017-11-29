@@ -22,3 +22,4 @@ fp.filter = (callback, collection) => {
 
   return Array.prototype.filter.call(collection,callback);
 };
+
