@@ -2,12 +2,12 @@
 
 const fp = module.exports = {};
 
-fp.map = () => {
-
+fp.map = function(callback, collection) {
+  return Array.prototype.map.call(collection, callback);
 };
 
-fp.filter = () => {
-
+fp.filter = (callback, collection) => {
+  return Array.prototype.filter.call(collection, callback);
 };
 
 fp.reduce = () => {
