@@ -6,11 +6,26 @@ fp.map = function(callback, collection) {
   if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
   if(typeof collection !== 'object') throw new TypeError('<callback> should be an object');
   return Array.prototype.map.call(collection, callback);
-
 };
 
+fp.filter = function(callback, collection) {
+  if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
+  if(typeof collection != 'object') throw new TypeError('<callback> should be a function');
+  return Array.prototype.filter.call(collection, callback);
+};
 
-// In each function error-check each parameter and throw an Error with a meaningful message if the function is invoked with invalid arguments. Do not use any third party libraries in the FP module.
+// fp.reduce = function(callback, initialState, collection) {
+//   if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
+//   if(typeof collection != 'object') throw new TypeError('<callback> should be a function');
+//   return Array.prototype.filter.call(collection, callback);
+// };
+
+// fp.slice = function(begin, end, collection) {
+//   if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
+//   if(typeof collection != 'object') throw new TypeError('<callback> should be a function');
+//   return Array.prototype.filter.call(collection, callback);
+// };
+
 
 // fp.map and fp.filter should have the function signature (callback, collection) => Array
 // fp.reduce should have the function signature (callback, initialState, collection) => data
