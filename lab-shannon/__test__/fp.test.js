@@ -22,9 +22,15 @@ describe(`fp.test.js`, () => {
     });
   })
 
-  // describe(`fp.slice`, () => {
-  //   test(`fp.slice should return a portion of the input from the specified start point to end point (not inclusive`, () => {
-  //     expect(fp.slice(0, 3, 'coding')).toEqual('cod');
-  //   })
-  // })
+  describe(`fp.slice`, () => {
+    test(`fp.slice should return a portion of the input from the specified start point to end point (not inclusive`, () => {
+      expect(fp.slice(0, 4, ['coding', 'is', 'the', 'best', 'ever'])).toEqual(['coding', 'is', 'the', 'best']);
+    })
+  })
+
+  describe(`fp.reduce`, () => {
+    test(`fp.reduce should return a single value by adding the current element's value in the initial collection onto the starting value provided`, () => {
+      expect(fp.reduce((accumulator, currentValue) => {return accumulator + currentValue}, [0,1,2,3], 0)).toEqual(6);
+    })
+  })
 });
