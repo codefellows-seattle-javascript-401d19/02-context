@@ -50,9 +50,3 @@ fp.slice = (begin, end, collection) => {
 let isIterable = object => object.length !== undefined;
 let isFunction = object => typeof object === 'function';
 let isString = object => typeof object === 'string';
-
-console.log(fp.slice(
-  4,
-  5,
-  'hey there boss'
-));

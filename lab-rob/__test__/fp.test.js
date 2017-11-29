@@ -416,27 +416,27 @@ describe('fp.js tests', () => {
       ).toEqual(['t']);
     });
 
-    // test('When given a valid callback function, an initial state, and an array-like object, such as arguments or args, a sliced object should be returned.', () => {
-    //   expect(
-    //     (function() {
-    //       return fp.slice(
-    //         (accumulator, currentValue) => accumulator + currentValue,
-    //         0,
-    //         arguments
-    //       );
-    //     })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
-    //   ).toBe(55);
+    test('When given a valid starting value, ending value, and an array-like object, such as arguments or args, an array should be returned.', () => {
+      expect(
+        (function() {
+          return fp.slice(
+            1,
+            2,
+            arguments
+          );
+        })(1, 2, 3, 4, 5, 6, 7, 8, 9, 10)
+      ).toEqual([2]);
 
-    //   expect(
-    //     ((...args) => {
-    //       return fp.slice(
-    //         (accumulator, currentValue) => accumulator + currentValue,
-    //         '',
-    //         args
-    //       );
-    //     })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
-    //   ).toBe('I am super tired!');
-    // });
+      expect(
+        ((...args) => {
+          return fp.slice(
+            5,
+            10,
+            args
+          );
+        })('I', ' ', 'a', 'm', ' ', 's', 'u', 'p', 'e', 'r', ' ', 't', 'i', 'r', 'e', 'd', '!')
+      ).toEqual(['s', 'u', 'p', 'e', 'r']);
+    });
 
     // test('When called with an empty collection, fp.slice() should return the initialState argument', () => {
     //   expect(fp.slice(
