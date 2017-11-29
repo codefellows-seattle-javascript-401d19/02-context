@@ -3,8 +3,6 @@
 const fp = require('../lib/fp.js');
 
 
-//Reduce testing
-
 
 describe('fp.js', () => {
 
@@ -31,7 +29,7 @@ describe('fp.js', () => {
         () => {
           fp.reduce(
             (x, y) => x+y,
-            ['1',2, null],
+            ['hello',1, null],
             0);
         }).toThrow();
       expect(
@@ -51,6 +49,10 @@ describe('fp.js', () => {
     });
   });
 
+
+  // Map testing 
+
+
   describe('fp.map', ()=>{
       
 
@@ -69,6 +71,10 @@ describe('fp.js', () => {
             console.log('exception'));
           }).toThrow();
       });
+
+
+      //Filter testing
+
 
     describe('tests for fp.filter', () => {
     
@@ -96,9 +102,26 @@ describe('fp.js', () => {
                 [1,2,3]);
             }).toThrow();
         });
+    });
+
+    //Slice testings
+
+    describe('fp.slice', () => {
+        test('', () => {
+          expect(fp.slice(
+            0,
+            [1,2,3,4]
+          )).toEqual([1]);
         });
-
-
+      
+        test('an exception should be thrown if the collection is not a object', () => {
+          expect(
+            () => {
+              fp.slice(`I'm totally a object`, [1,2,3,4], 0);
+            }
+          ).toThrow();
+        });
+      });
 
 
 
