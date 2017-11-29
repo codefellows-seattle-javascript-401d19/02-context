@@ -30,13 +30,8 @@ fp.reduce = function(callback, collection, initialState) {
   return Array.prototype.reduce.call(collection, callback, initialState);
 };
 
-// fp.slice = function(begin, end, collection) {
-//   if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
-//   if(typeof collection != 'object') throw new TypeError('<callback> should be a function');
-//   return Array.prototype.filter.call(collection, callback);
-// };
-
-
-
-// fp.reduce should have the function signature (callback, initialState, collection) => data
-// fp.slice should have the function signature (begin, end, collection) => Array
+fp.slice = function(collection, begin, end) {
+  if(typeof collection != 'object') throw new TypeError('<collection> should be an object');
+  if(collection.length < 1) throw new TypeError('<collection> must have input');
+  return Array.prototype.slice.call(collection, begin, end);
+};

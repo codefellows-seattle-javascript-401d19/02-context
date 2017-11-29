@@ -171,12 +171,52 @@ describe('fp.test.js', () => {
       ).toThrow();
     });
   
-    test('testing that .filter will throw an error if passed a value that is not a number', () => {
+    test('testing that .reduce will throw an error if passed a value that is not a number', () => {
       expect(() => {
         fp.reduce(
           (a,b) => a + b,
           [null, null, 3],
           0
+        );
+      }
+      ).toThrow();
+    });
+  });
+});
+
+//++++++++++++++++++++++++++++++++++++
+// catherine - fp.slice test functions
+//++++++++++++++++++++++++++++++++++++
+
+describe(('testing to see if fp.slice is functioning as expected'), () => {
+
+  test('testing that .slice is functioning properly', () => {
+    expect(fp.slice(
+      [0, 1, 2, 3, 4, 5],
+      0,
+      2
+    )).toEqual([0, 1]);
+  });
+
+  describe(('testing to see if fp.slice contains invalid input'), () => {
+
+    test('testing that .reduce collection must be an object', () => {
+      expect(() => {
+        fp.slice(
+          'hello',
+          0,
+          2
+        );
+      }
+      ).toThrow();
+    });
+
+    test('testing that .reduce will throw an error if empty', () => {
+      expect(() => {
+        fp.slice(
+          [],
+          0,
+          2
         );
       }
       ).toThrow();
