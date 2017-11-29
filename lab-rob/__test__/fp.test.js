@@ -3,7 +3,36 @@
 const fp = require('../lib/fp');
 
 describe('fp.js tests', () => {
-  describe('When called correctly, fp.map should take in a callback function and an array / array-like object, and return an Array.', () => {
+  describe('When called with a set of parameters, fp.enoughParams() will return true if all requested parameters are defined and not null, and will throw an error otherwise.', () => {
+    test('When called with all requested parameters, the function should return true.', () => {
+      function test(param1, param2, param3) {
+        return fp.enoughParams(param1, param2, param3);
+      }
+
+      expect(test(1, 2, 3)).toBeTruthy();
+      expect(test(1, 2, 3, 4, 5)).toBeTruthy();
+    });
+
+    test('When called with too few, undefined, or null args, an exception is thrown.', () => {
+      function test(param1, param2, param3) {
+        return fp.enoughParams(param1, param2, param3);
+      }
+
+      expect(() => {
+        test(1, 2);
+      }).toThrow();
+
+      expect(() => {
+        test(1, 2, undefined);
+      }).toThrow();
+
+      expect(() => {
+        test('1', {}, null);
+      }).toThrow();
+    });
+  });
+
+  describe('When called correctly, fp.map() should take in a callback function and an array / array-like object, and return an Array.', () => {
     test('When called with an array, fp.map() should return a mapped array', () => {
       expect(fp.map(
         num => num * 2,
@@ -16,7 +45,7 @@ describe('fp.js tests', () => {
       )).toEqual(['hihi', 'therethere']);
     });
 
-    test('When called with arguments are args, an acted-on array should be returned.', () => {
+    test('When called with arguments or args, an acted-on array should be returned.', () => {
       expect(
         (function(){
           return fp.map(
@@ -128,6 +157,34 @@ describe('fp.js tests', () => {
           );
         })('', 0, 1, '1', null, undefined, true, false)
       ).toEqual([1, '1', true]);
+    });
+
+    test('If the second argument is not an iterable object, an exception should be thrown.', () => {
+      expect(() => {
+        fp.filter(
+          ele => ele,
+          456
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.filter(
+          ele => ele,
+          null
+        );
+      }).toThrow();
+    });
+
+    test('If there are less than two arguments, an exception should be thrown.', () => {
+      expect(() => {
+        fp.filter(
+          ele => ele
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.filter();
+      }).toThrow();
     });
   });
 });
