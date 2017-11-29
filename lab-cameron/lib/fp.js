@@ -39,6 +39,14 @@ fp.reduce = (callback, initialState, collection) => {
 };
 
 fp.slice = (begin, end, collection) => {
+  if (typeof begin !== 'number') {
+    throw new TypeError('<begin> should be a number');
+  }
+
+  if (typeof end !== 'number') {
+    throw new TypeError('<end> should be a number');
+  }
+
   if (!collection.hasOwnProperty('length')) {
     throw new TypeError('<collection> should be an array-like object');
   }

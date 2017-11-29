@@ -156,6 +156,28 @@ describe('fp.js', () => {
       expect(result).toEqual(expected);
     });
 
+    test('throw an exception if begin is not a number', () => {
+      const begin = 'not a number';
+      const end = 3;
+      const collection = [1, 2, 3, 4];
+      expect(
+        () => {
+          slice(begin)(end)(collection);
+        }
+      ).toThrow();
+    });
+
+    test('throw an exception if end is not a number', () => {
+      const begin = 1;
+      const end = 'not a number';
+      const collection = [1, 2, 3, 4];
+      expect(
+        () => {
+          slice(begin)(end)(collection);
+        }
+      ).toThrow();
+    });
+
     test('throw an exception if collection is not an array-like object', () => {
       const begin = 1;
       const end = 3;
