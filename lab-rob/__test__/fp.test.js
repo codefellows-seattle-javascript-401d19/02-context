@@ -46,7 +46,25 @@ describe('fp.js tests', () => {
           [],
           'An iterable object',
           arg => arg.length !== undefined
-        )).toBeDefined();
+        )).toBeTruthy();
+    });
+
+    test('When the argument fails the type test, an error is thrown.', () => {
+      expect(() => {
+        fp.correctType(
+          'words and stuff',
+          'A number',
+          arg => typeof arg === 'number'
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.correctType(
+          234,
+          'An iterable object',
+          arg => arg.length !== undefined
+        );
+      }).toThrow();
     });
   });
 

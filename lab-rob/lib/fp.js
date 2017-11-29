@@ -28,9 +28,3 @@ fp.filter = (callback, collection) => {
     throw new TypeError('<collection> must be an iterable object.');
   return [].filter.call(collection, callback);
 };
-
-console.log(fp.correctType(
-  [],
-  'An iterable object',
-  arg => arg.length !== undefined
-));
