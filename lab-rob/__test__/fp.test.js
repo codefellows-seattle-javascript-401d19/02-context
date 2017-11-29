@@ -269,21 +269,23 @@ describe('fp.js tests', () => {
       ).toEqual([1, 2, 3, 4, 5]);
     });
 
-    // test('When given a valid callback and a string, a reduceed array should be returned.', () => {
-    //   expect(
-    //     fp.reduce(
-    //       char => char === 'p',
-    //       'schmeeple-schmapple-peups'
-    //     )
-    //   ).toEqual(['p', 'p', 'p', 'p', 'p']);
+    test('When given a valid callback function, an initial state, and a string, a reduced object should be returned.', () => {
+      expect(
+        fp.reduce(
+          (accumulator, currentValue) => currentValue === 'x' ? accumulator + '!!!' : accumulator + currentValue,
+          '',
+          'fjwejxwjex'
+        )
+      ).toBe('fjwej!!!wje!!!');
 
-    //   expect(
-    //     fp.reduce(
-    //       char => char > 2 && char < 5,
-    //       '1234567890'
-    //     )
-    //   ).toEqual(['3', '4']);
-    // });
+      expect(
+        fp.reduce(
+          (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
+          '',
+          '1234567890'
+        )
+      ).toBe('-2-10123456-3');
+    });
 
     // test('When given a valid callback and an array-like object, such as arguments or args, a reduceed array should be returned.', () => {
     //   expect(
