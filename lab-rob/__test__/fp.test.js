@@ -30,6 +30,12 @@ describe('fp.js tests', () => {
         test('1', {}, null);
       }).toThrow();
     });
+
+    test('When the first argument is not a string, an error is thrown.', () => {
+      expect(() => {
+        fp.enoughArgs(234);
+      }).toThrow();
+    });
   });
 
   describe('When fp.correctType() is called with an argument, expected value, and a type test, if the argument passes the test true is returned, otherwise an error is thrown.', () => {
@@ -64,6 +70,26 @@ describe('fp.js tests', () => {
           'An iterable object',
           arg => arg.length !== undefined
         );
+      }).toThrow();
+    });
+
+    test('If the argument "expected" is not a string, or "test" is not a function, an error is thrown.', ()=> {
+      expect(() => {
+        fp.correctType(123, 312, ele => ele);
+      }).toThrow();
+
+      expect(() => {
+        fp.correctType(123, '312', 3);
+      }).toThrow();
+    });
+
+    test('If there are too few arguments, an error is thrown.', () => {
+      expect(() => {
+        fp.correctType(1, '23');
+      }).toThrow();
+
+      expect(() => {
+        fp.correctType();
       }).toThrow();
     });
   });
