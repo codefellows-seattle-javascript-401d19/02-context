@@ -92,12 +92,12 @@ describe('fp.js', () => {
   describe('fp.slice', () => {
     const array1 = [3, 'two', null, 2, undefined];
 
-    test(`[3, 'two', null, 2, undefined] should return ['two', null, 2]`, () => {
-      expect(fp.slice(1, 4, array1)).toEqual(['two', null, 2]);
+    test(`begin: 1, end: -1 removes outer elements of array`, () => {
+      expect(fp.slice(1, -1, array1)).toEqual(['two', null, 2]);
     });
 
-    test(`begin: 4, end: 4, [4, 2] should return an empty array`, () => {
-      expect(fp.slice(4, 4, [4, 2])).toEqual([]);
+    test(`begin: 0, end: 0 empties the array`, () => {
+      expect(fp.slice(0, 0, [4, 5, 2, 3, 2])).toEqual([]);
     });
   });
 });
