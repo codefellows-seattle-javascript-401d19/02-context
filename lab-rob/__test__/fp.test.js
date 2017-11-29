@@ -32,6 +32,24 @@ describe('fp.js tests', () => {
     });
   });
 
+  describe('When fp.correctType() is called with an argument, expected value, and a type test, if the argument passes the test true is returned, otherwise an error is thrown.', () => {
+    test('When the argument passes the type test, true is returned.', () => {
+      expect(
+        fp.correctType(
+          'words and stuff',
+          'A string',
+          arg => typeof arg === 'string'
+        )).toBeTruthy();
+
+      expect(
+        fp.correctType(
+          [],
+          'An iterable object',
+          arg => arg.length !== undefined
+        )).toBeDefined();
+    });
+  });
+
   describe('When called correctly, fp.map() should take in a callback function and an array / array-like object, and return an Array.', () => {
     test('When called with an array, fp.map() should return a mapped array', () => {
       expect(fp.map(

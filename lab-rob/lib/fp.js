@@ -10,6 +10,11 @@ fp.enoughArgs = (funcName, ...args) => {
   return true;
 };
 
+fp.correctType = (arg, expected, test) => {
+  if(test(arg)) return true;
+  throw new TypeError(`${expected} was expected, but was not supplied. Got ${typeof arg}.`);
+};
+
 fp.map = (callback, collection) => {
   fp.enoughArgs(callback, collection);
   if(collection.length === undefined) 
@@ -23,3 +28,9 @@ fp.filter = (callback, collection) => {
     throw new TypeError('<collection> must be an iterable object.');
   return [].filter.call(collection, callback);
 };
+
+console.log(fp.correctType(
+  [],
+  'An iterable object',
+  arg => arg.length !== undefined
+));
