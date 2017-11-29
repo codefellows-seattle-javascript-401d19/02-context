@@ -80,24 +80,42 @@ describe('fp.test.js', () => {
           a * 3;
           if(typeof a !== 'number') throw new TypeError('array can only include numbers');
         },
-        [1, null, 3]
+        [null, null, 3]
         );
       }
       ).toThrow();
     });
   });
 
+  // catherine - fp.reduce test functions
 
-
-//   describe(('fp.reduce'), () => {
-//     test('testing that .reduce is functioning properly', () => {
- 
-//     });
-//   });
-//   describe(('fp.slice'), () => {
-//     test('testing that .slice is functioning properly', () => {
- 
-//     });
-//   });
-
+  describe(('fp.reduce'), () => {
+    test('testing that .reduce is functioning properly', () => {
+      expect(fp.reduce(
+        (a,b) => (a + b),
+        [0, 1, 2],
+        0
+      )
+      );
+    });
+    test('testing that .reduce callback must be a function', () => {
+      expect(() => {
+        fp.reduce('a,b', 
+          [0, 1, 2],
+          0
+        );
+      }
+      ).toThrow();
+    });
+    test('testing that .reduce collection must be an object', () => {
+      expect(() => {
+        fp.reduce(
+          (a,b) => (a + b),
+          'hello',
+          0
+        );
+      }
+      ).toThrow();
+    });
+  });
 });
