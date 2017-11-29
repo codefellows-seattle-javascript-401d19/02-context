@@ -147,7 +147,7 @@ describe('fp.js', () => {
         4
       ).toString()
       ).toBe('2,three,4');
-    });
+    });2, 'three', 4;
     test('an exception should be thrown if error', ()=>{
       expect(
         () => {
