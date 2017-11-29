@@ -1,0 +1,18 @@
+{
+  "name": "call-bind-apply",
+  "version": "1.0.0",
+  "description": "##When to use exceptions",
+  "main": "index.js",
+  "dependencies": {
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "lint" : "eslint"
+  },
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "author": "",
+  "license": "ISC"
+}
