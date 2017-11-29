@@ -448,27 +448,35 @@ describe('fp.js tests', () => {
       expect(fp.slice(
         4,
         4,
-        [1, 2, 3]
+        [1, 2, 3, 4, 5, 6]
       )).toEqual([]);
     });
 
-    // test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
-    //   expect(() => {
-    //     fp.slice(
-    //       '(accumulator, currentValue) => accumulator + (Number(currentValue) - 3)',
-    //       '',
-    //       '1234567890'
-    //     );
-    //   }).toThrow();
+    test('If the first argument or second argument is not a number, or the third argument is not an iterable object, an exception should be thrown.', () => {
+      expect(() => {
+        fp.slice(
+          'r',
+          2,
+          [1, 2, 3]
+        );
+      }).toThrow();
 
-    //   expect(() => {
-    //     fp.slice(
-    //       (accumulator, currentValue) => accumulator + (Number(currentValue) - 3),
-    //       '',
-    //       1234567890
-    //     );
-    //   }).toThrow();
-    // });
+      expect(() => {
+        fp.slice(
+          0,
+          '2',
+          [1, 2, 3]
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.slice(
+          0,
+          1,
+          3
+        );
+      }).toThrow();
+    });
 
     // test('If there are less than three arguments, an exception should be thrown.', () => {
     //   expect(() => {
