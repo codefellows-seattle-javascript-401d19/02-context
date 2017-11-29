@@ -39,7 +39,7 @@ describe('fp.js tests', () => {
       expect(() => {
         fp.map(
           ele => ele,
-          false
+          null
         );
       }).toThrow();
     });
