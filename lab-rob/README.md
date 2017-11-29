@@ -19,3 +19,6 @@ fp.js exports 6 functions, 2 that are used across methods, and 4 that extend the
 
 #### `fp.reduce(callback, initialState, collection)`
 `fp.reduce()` has an arity of three, and expects first a callback function, then an initialState for the reduction, and then an iterable object like an array, string, or array-like object. If any argument is not of the intended type, the method will throw an error. If there are less than three arguments provided, it will throw an error. If the callback is not a function, or the collection is not iterable, it will throw an error. Otherwise, if the callback is valid and the object is iterable, the function will return an object reduced as specified. If an empty array or empty string is input for `collection`, the initialState argument is returned.
+
+#### `fp.slice(begin, end, collection)`
+`fp.slice()` has an arity of three, and expects first a beginning index, then an ending index, and then an iterable object like an array, string, or array-like object. If any argument is not of the intended type, the method will throw an error. If there are less than three arguments provided, it will throw an error. Otherwise, the function will return an object sliced as specified. If an empty array or empty string is input for `collection`, an empty array is returned.

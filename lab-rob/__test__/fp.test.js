@@ -438,19 +438,19 @@ describe('fp.js tests', () => {
       ).toEqual(['s', 'u', 'p', 'e', 'r']);
     });
 
-    // test('When called with an empty collection, fp.slice() should return the initialState argument', () => {
-    //   expect(fp.slice(
-    //     (accumulator, currentValue) => accumulator + currentValue,
-    //     '',
-    //     []
-    //   )).toBe('');
+    test('When called with an empty collection, or when begin === end, fp.slice() should return an empty array', () => {
+      expect(fp.slice(
+        0,
+        0,
+        []
+      )).toEqual([]);
 
-    //   expect(fp.slice(
-    //     (accumulator, currentValue) => accumulator + currentValue,
-    //     9,
-    //     ''
-    //   )).toBe(9); 
-    // });
+      expect(fp.slice(
+        4,
+        4,
+        [1, 2, 3]
+      )).toEqual([]);
+    });
 
     // test('If the first argument is not a function, or the third argument is not an iterable object, an exception should be thrown.', () => {
     //   expect(() => {
