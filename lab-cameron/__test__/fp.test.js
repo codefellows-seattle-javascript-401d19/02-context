@@ -1,6 +1,6 @@
 'use strict';
 
-const { map, filter, reduce } = require('../lib/fp');
+const { map, filter, reduce, slice } = require('../lib/fp');
 
 describe('fp.js', () => {
 
@@ -85,7 +85,11 @@ describe('fp.js', () => {
     });
   });
 
-  // describe('fp.slice', () => {
-  //   test('return a ')
-  // });
+  describe('fp.slice', () => {
+    test('return an sub array from an original array', () => {
+      const arr = [1, 2, 3, 4];
+      const expected = [2, 3];
+      expect(slice(1, 3, arr)).toEqual(expected);
+    });
+  });
 });
