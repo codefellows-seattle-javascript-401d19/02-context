@@ -1,0 +1,23 @@
+{
+  "name": "lab02-fredric",
+  "version": "1.0.0",
+  "description": "The exported values in my greet.JS module is a single \"string\" unless a non string is input which will result in returning \"null\". This would be considered as having only ONE \"arity\". My expected data was \"Hello, World!\"",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "eslint": "^4.12.0",
+    "eslint-plugin-react": "^7.5.1",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "jest": "^21.2.1"
+  },
+  "scripts": {
+    "test": "jest -i --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
