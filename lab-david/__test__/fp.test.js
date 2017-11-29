@@ -68,10 +68,10 @@ describe('fp.slice', () => {
     )).toEqual([0]);
   });
 
-  test('an exception should be thrown if the callback is not a function', () => {
+  test('an exception should be thrown if the collection is not a object', () => {
     expect(
       () => {
-        fp.slice(`I'm totally a function ()`, [3,3,3], 0);
+        fp.slice(`I'm totally a object`, [1,2,3,4], 0);
       }
     ).toThrow();
   });
