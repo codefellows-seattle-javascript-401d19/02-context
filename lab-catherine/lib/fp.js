@@ -21,7 +21,6 @@ fp.filter = function(callback, collection) {
 };
 
 fp.reduce = function(callback, collection, initialState) {
-//   if(typeof callback !== 'function') throw new TypeError('<callback> should be a function');
   if(typeof collection != 'object') throw new TypeError('<collection> should be an object');
   if(collection.length < 1) throw new TypeError('<collection> must have input');
   collection.forEach(a => {

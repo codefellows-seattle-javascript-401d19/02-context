@@ -115,15 +115,19 @@ describe('fp.test.js', () => {
   // catherine - fp.reduce test functions
   //++++++++++++++++++++++++++++++++++++
 
-  describe(('fp.reduce'), () => {
+  describe(('testing to see if fp.reduce is functioning as expected'), () => {
+
     test('testing that .reduce is functioning properly', () => {
       expect(fp.reduce(
         (a,b) => (a + b),
         [0, 1, 2],
         0
-      )
-      );
+      )).toEqual(3);
     });
+  });
+
+  describe(('testing to see if fp.reduce contains invalid input'), () => {
+
     test('testing that .reduce callback must be a function', () => {
       expect(() => {
         fp.reduce('a,b', 
@@ -133,11 +137,45 @@ describe('fp.test.js', () => {
       }
       ).toThrow();
     });
+
+    test('testing that initialState is a number', () => {
+      expect(() => {
+        fp.reduce(
+          (a,b)  => a + b,
+          [0, 1, 2],
+          'a'
+        );
+      }
+      ).toThrow();
+    });
+
     test('testing that .reduce collection must be an object', () => {
       expect(() => {
         fp.reduce(
           (a,b) => (a + b),
           'hello',
+          0
+        );
+      }
+      ).toThrow();
+    });
+
+    test('testing that .reduce will throw an error if empty', () => {
+      expect(() => {
+        fp.reduce(
+          (a,b)  => a + b,
+          [],
+          0
+        );
+      }
+      ).toThrow();
+    });
+  
+    test('testing that .filter will throw an error if passed a value that is not a number', () => {
+      expect(() => {
+        fp.reduce(
+          (a,b) => a + b,
+          [null, null, 3],
           0
         );
       }
