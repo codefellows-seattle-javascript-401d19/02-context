@@ -35,6 +35,25 @@ describe('fp.js tests', () => {
           456
         );
       }).toThrow();
+
+      expect(() => {
+        fp.map(
+          ele => ele,
+          false
+        );
+      }).toThrow();
+    });
+
+    test('If there are less than two arguments, an exception should be thrown.', () => {
+      expect(() => {
+        fp.map(
+          ele => ele
+        );
+      }).toThrow();
+
+      expect(() => {
+        fp.map();
+      }).toThrow();
     });
   });
 });
