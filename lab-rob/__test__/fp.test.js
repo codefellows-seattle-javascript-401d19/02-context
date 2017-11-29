@@ -93,5 +93,14 @@ describe('fp.js tests', () => {
         )
       ).toEqual(['schmoo', 'schmoopoppy']);
     });
+
+    test('When given a valid callback and a string, a filtered array should be returned.', () => {
+      expect(
+        fp.filter(
+          char => char === 'p',
+          'schmeeple-schmapple-peups'
+        )
+      ).toEqual(['p', 'p', 'p', 'p', 'p']);
+    });
   });
 });
