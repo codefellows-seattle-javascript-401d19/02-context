@@ -40,3 +40,22 @@ describe('fp.map', () => {
     ).toThrow();
   });
 });
+
+describe('fp.filter', () => {
+  test('creates a new array with all elements that pass the test by the function', () => {
+    expect(fp.filter(
+      (x) => {
+        return x < 0;
+      },
+      [0, 1, 2]
+    )).toEqual([1, 2]);
+  });
+
+  test('an exception should be thrown if the callback is not a function', () => {
+    expect(
+      () => {
+        fp.filter(`I'm totally a function ()`, [3,3,3], 0);
+      }
+    ).toThrow();
+  });
+});
