@@ -3,9 +3,10 @@
 const fp = module.exports = {};
 
 fp.map = (callback, collection) => {
-  if(typeof callback !== 'function'){
-    throw new TypeError('The callback you provided is not a function');
-  }
+  // if(typeof callback !== 'function'){
+  //   console.log(typeof callback, `callback`);
+  //   throw new TypeError('The callback you provided is not a function');
+  // }
 
   return Array.prototype.map.call(collection, callback);
 };
