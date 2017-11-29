@@ -6,7 +6,7 @@ describe('fp.js', () => {
 
   // testing fp.map function
   describe('fp.map', () => {
-    test('returns array with values multiplied with 2', () => {
+    test('returns array with items multiplied with 2', () => {
       expect(fp.map(
         (num) => num * 2,
         [0, 1, 2]
