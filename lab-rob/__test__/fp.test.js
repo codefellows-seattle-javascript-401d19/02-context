@@ -3,10 +3,10 @@
 const fp = require('../lib/fp');
 
 describe('fp.js tests', () => {
-  describe('When called with a set of parameters, fp.enoughParams() will return true if all requested parameters are defined and not null, and will throw an error otherwise.', () => {
+  describe('When called, fp.enoughArgs() will return true if all requested parameters are defined and not null, or will throw an error otherwise.', () => {
     test('When called with all requested parameters, the function should return true.', () => {
       function test(param1, param2, param3) {
-        return fp.enoughParams(param1, param2, param3);
+        return fp.enoughArgs('test()', param1, param2, param3);
       }
 
       expect(test(1, 2, 3)).toBeTruthy();
@@ -15,7 +15,7 @@ describe('fp.js tests', () => {
 
     test('When called with too few, undefined, or null args, an exception is thrown.', () => {
       function test(param1, param2, param3) {
-        return fp.enoughParams(param1, param2, param3);
+        return fp.enoughArgs('test()', param1, param2, param3);
       }
 
       expect(() => {
