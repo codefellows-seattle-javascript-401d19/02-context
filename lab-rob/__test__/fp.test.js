@@ -109,5 +109,25 @@ describe('fp.js tests', () => {
         )
       ).toEqual(['3', '4']);
     });
+
+    test('When given a valid callback and an array-like object, such as arguments or args, a filtered array should be returned.', () => {
+      expect(
+        (function() {
+          return fp.filter(
+            arr => typeof arr[0] === 'object',
+            arguments
+          );
+        })([[[]]], [9, {arr: [{}, []]}], [['boo'], 'hi'])
+      ).toEqual([[[[]]], [['boo'], 'hi']]);
+
+      expect(
+        ((...args) => {
+          return fp.filter(
+            arr => arr,
+            args
+          );
+        })('', 0, 1, '1', null, undefined, true, false)
+      ).toEqual([1, '1', true]);
+    });
   });
 });
