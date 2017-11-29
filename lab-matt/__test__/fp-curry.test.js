@@ -61,10 +61,37 @@ describe('fp-curry.js', () => {
   // ---------------------------------------------
   describe('curry filter method', () => {
     // ------METHODS/PARAMETERS-------
+    const filterWordsOverFive = function(currentElement) {
+      return currentElement.length > 5;
+    };
+    const filterNumbersOverFifty = function(currentElement) {
+      return currentElement > 50;
+    };
 
     // --------TEST FUNCTIONS---------
-    // -----------TESTS---------------
+    let successfulTest = function(collection, method, expected) {
+      expect(filter({
+        collection: collection,
+        callback: method,
+      })).toEqual(expected);
+    };
 
+    // -----------TESTS---------------
+    test(`words over length of five - ['foobar', 'truthy', 'falsy', 'true', 'one'] => ['foobar', 'truthy']`, () => {
+      successfulTest(['foobar', 'truthy', 'falsy', 'true', 'one'], filterWordsOverFive, ['foobar', 'truthy']);
+    });
+
+    test(`words over length of five  - ['random', 'large', 'orange', 'banana', 'vehicle'] => ['random', 'orange', 'banana', 'vehicle']`, () => {
+      successfulTest(['random', 'large', 'orange', 'banana', 'vehicle'], filterWordsOverFive, ['random', 'orange', 'banana', 'vehicle']);
+    });
+
+    test('numbers over fifty - [34, 23, 1235432, 268234, 372] => [1235432, 268234, 372]', () => {
+      successfulTest([34, 23, 1235432, 268234, 372], filterNumbersOverFifty, [1235432, 268234, 372]);
+    });
+
+    test('numbers over fifty - [50, 40, 30, 60] => [60]', () => {
+      successfulTest([50, 40, 30, 60], filterNumbersOverFifty, [60]);
+    });
   });
 
   // ---------------------------------------------
@@ -72,16 +99,59 @@ describe('fp-curry.js', () => {
   // ---------------------------------------------
   describe('curry reduce method', () => {
     // ------METHODS/PARAMETERS-------
+    const reduceNumbers = (accumulator, currentElement) => {
+      return accumulator + currentElement;
+    };
+    const concatStrings = (accumulator, currentElement) => {
+      if (accumulator === '') return currentElement;
+      return `${accumulator} ${currentElement}`;
+    };
+
     // --------TEST FUNCTIONS---------
+    let successfulTest = function(collection, method, initialState, expected) {
+      expect(reduce({
+        collection: collection,
+        callback: method,
+        initialState: initialState,
+      })).toEqual(expected);
+    };
+
     // -----------TESTS---------------
+    test('reduce [3, 6, 10] to 19', () => {
+      successfulTest([3, 6, 10], reduceNumbers, 0, 19);
+    });
+
+    test(`reduce ['hello', 'there', 'friend'] => 'hello there friend'`, () => {
+      successfulTest(['hello', 'there', 'friend'], concatStrings, '', 'hello there friend');
+    });
+
+    test('reduce empty string => returns empty string', () => {
+      successfulTest('', concatStrings, '', '');
+    });
   });
 
   // ---------------------------------------------
   //  SLICE
   // ---------------------------------------------
   describe('curry slice method', () => {
-    // ------METHODS/PARAMETERS-------
+    const array1 = [3, 'two', null, 2, undefined];
+
     // --------TEST FUNCTIONS---------
+    let successfulTest = function(collection, begin, end, expected) {
+      expect(slice({
+        collection: collection,
+        begin: begin,
+        end: end,
+      })).toEqual(expected);
+    };
+
     // -----------TESTS---------------
+    test(`begin: 1, end: -1 removes outer elements of array`, () => {
+      successfulTest(array1, 1, -1, ['two', null, 2]);
+    });
+
+    test(`begin: 0, end: 0 empties the array`, () => {
+      successfulTest(array1, 0, 0, []);
+    });
   });
 });
