@@ -76,51 +76,56 @@ describe('fp.js', () => {
       //Filter testing
 
 
-    describe('tests for fp.filter', () => {
-    
-        test('fp.filter should return an array with elements that passed the filter applied by the callback', () => {
-            expect(fp.filter(
-            (x => x < 3),
-            [1,2,3]
-            )).toEqual([1,2]);
-        });
-    
-        test('An exception should be thrown if not an array', () => {
-            expect(
-            () => {
-                fp.filter(
-                x => x < 3,
-                'string, not array');
-            }).toThrow();
-        });
-    
-        test('An exception should be thrown if callback is not a function', () => {
-            expect(
-            () => {
-                fp.filter(
-                'string',
-                [1,2,3]);
-            }).toThrow();
-        });
+  describe('fp.filter', () => {
+
+    test('fp.filter should return an array with elements that passed the filter applied by the callback', () => {
+        expect(fp.filter(
+        (x => x < 3),
+        [1,2,3]
+        )).toEqual([1,2]);
     });
+
+    test('An exception should be thrown if not an array', () => {
+        expect(
+        () => {
+            fp.filter(
+            x => x < 3,
+            'string, not array');
+        }).toThrow();
+    });
+
+    test('An exception should be thrown if callback is not a function', () => {
+        expect(
+        () => {
+            fp.filter(
+            'string',
+            [1,2,3]);
+        }).toThrow();
+    });
+});
 
     //Slice testings
 
     describe('fp.slice', () => {
-        test('', () => {
-          expect(fp.slice(
-            0,
-            [1,2,3,4]
-          )).toEqual([1]);
-        });
       
         test('an exception should be thrown if the collection is not a object', () => {
           expect(
             () => {
-              fp.slice(`I'm totally a object`, [1,2,3,4], 0);
+              fp.slice(`object`, [1,2,3,4], 0);
             }
           ).toThrow();
         });
+
+        test('An exception should be thrown if begin or end is not a number', () => {
+            expect(
+              () => {
+                fp.slice(
+                  'string',
+                  7,
+                  [1,2,3,4,5,6,8]);
+              }).toThrow();
+          });
+          
       });
 
 
