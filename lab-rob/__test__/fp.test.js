@@ -101,6 +101,13 @@ describe('fp.js tests', () => {
           'schmeeple-schmapple-peups'
         )
       ).toEqual(['p', 'p', 'p', 'p', 'p']);
+
+      expect(
+        fp.filter(
+          char => char > 2 && char < 5,
+          '1234567890'
+        )
+      ).toEqual(['3', '4']);
     });
   });
 });
