@@ -9,24 +9,31 @@ fp.map = (callback, collection) => {
   //   throw new TypeError('<callback> should be a function');
 
   if(!Array.isArray(collection))
-    throw new TypeError('<collection> should be an array or array of objects/object');
+    throw new TypeError('<collection> should be an array');
 
   if(collection === null)
-    throw new TypeError('<collection> or <callback> should NOT be null');
-
-
+    throw new TypeError('<collection> should NOT be null');
 
   return Array.prototype.map.call(collection, callback);
 };
 
-fp.filter = (callback, collection) => {
+fp.reduce = (callback, collection, initialValue) => {
 
-  return array;
+  if(typeof callback !== 'function')
+    throw new TypeError('<callback> should be a function');
+
+  if(!Array.isArray(collection))
+    throw new TypeError('<collection> should be an array');
+
+  if(collection === null)
+    throw new TypeError('<collection> should NOT be null');
+
+  return Array.prototype.reduce.call(collection, callback, initialValue);
 };
 
-fp.reduce = (callback, initialState, collection) => {
+fp.filter = (callback, collection) => {
 
-  return data;
+  return Array.prototype.filter.call(collection, callback);
 };
 
 fp.slice = (begin, end, collection) => {
