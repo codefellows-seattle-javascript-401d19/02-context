@@ -1,0 +1,31 @@
+{
+  "name": "lab-catherine",
+  "version": "1.0.0",
+  "description": "402-lab-2",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest -i --coverage",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccloops/02-context.git"
+  },
+  "keywords": [
+    "node",
+    "jest"
+  ],
+  "author": "Catherine Looper",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ccloops/02-context/issues"
+  },
+  "homepage": "https://github.com/ccloops/02-context#readme",
+  "devDependencies": {
+    "eslint": "^4.12.0",
+    "jest": "^21.2.1"
+  }
+}
