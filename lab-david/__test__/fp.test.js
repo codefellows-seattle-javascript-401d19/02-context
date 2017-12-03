@@ -68,10 +68,10 @@ describe('fp.slice', () => {
     )).toEqual([0]);
   });
 
-  test('an exception should be thrown if the collection is not a object', () => {
+  test('an exception should be thrown if the collection is not an array-like object', () => {
     expect(
       () => {
-        fp.slice(`I'm totally a object`, [1,2,3,4], 0);
+        fp.slice(1, 2, 3);
       }
     ).toThrow();
   });
