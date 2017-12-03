@@ -21,7 +21,7 @@ fp.filter = (callback, collection) => {
 };
 
 fp.slice = (begin, end, collection) => {
-  if(!collection.length)
-    throw new TypeError('<collection> is not an array-like object because it has no length!');
-  return Array.prototype.slice.apply(this, [collection, begin, end]);
+  if(typeof callback !== 'object')
+    throw new TypeError('<collection> should be an array like object');
+  return Array.prototype.slice.call(collection, begin, end);
 };
