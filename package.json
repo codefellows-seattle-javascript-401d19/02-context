@@ -1,0 +1,26 @@
+{
+  "name": "02-context",
+  "version": "1.0.0",
+  "description": "Lab 2",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hazzed/02-context.git"
+  },
+  "author": "Dalton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hazzed/02-context/issues"
+  },
+  "homepage": "https://github.com/hazzed/02-context#readme",
+  "devDependencies": {
+    "jest": "^21.2.1"
+  }
+}
